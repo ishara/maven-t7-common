@@ -41,11 +41,11 @@ public class MyArtifactResolver {
     private List<ArtifactRepository> remoteRepositories;
 //    private boolean resolveAllways = false;
 
-    public MyArtifactResolver(AbstractT7BaseMojo t7Mojo) {
-        this.remoteRepositories = t7Mojo.getRemoteRepos();
-        this.local = t7Mojo.getLocal();
-        this.resolver = t7Mojo.getResolver();
-        this.factory = t7Mojo.getFactory();
+    public MyArtifactResolver(AbstractT7BaseMojo t7BaseMojo) {
+        this.remoteRepositories = t7BaseMojo.getRemoteRepos();
+        this.local = t7BaseMojo.getLocal();
+        this.resolver = t7BaseMojo.getResolver();
+        this.factory = t7BaseMojo.getFactory();
 //        this.resolveAllways = t7Mojo.isResolverUpdateSnapshotsAllways();
     }
 
