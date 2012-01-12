@@ -6,11 +6,11 @@
         <version>4</version>
     </parent>
     <groupId>com.googlecode.t7mp</groupId>
-    <artifactId>maven-t7-plugin</artifactId>
+    <artifactId>maven-t7-common</artifactId>
     <version>0.9.10-SNAPSHOT</version>
-    <packaging>maven-plugin</packaging>
-    <name>maven-t7-plugin</name>
-    <description>Tomcat 7 Maven Plugin</description>
+    <packaging>jar</packaging>
+    <name>maven-t7-common</name>
+    <description>T7MP common</description>
     <url>https://github.com/t7mp</url>
 
 
@@ -24,8 +24,8 @@
 
     <scm>
         <url>https://github.com/t7mp/t7mp</url>
-        <connection>scm:git:https://github.com/t7mp/t7mp.git</connection>
-        <developerConnection>scm:git:https://github.com/t7mp/t7mp.git</developerConnection>
+        <connection>scm:git:https://github.com/t7mp/t7mp.common.git</connection>
+        <developerConnection>scm:git:https://github.com/t7mp/t7mp.common.git</developerConnection>
     </scm>
 
     <issueManagement>
@@ -67,11 +67,6 @@
                 <version>3.0</version>
                 <configuration>
                 	<reportPlugins>
-			            <plugin>
-			                <groupId>org.apache.maven.plugins</groupId>
-			                <artifactId>maven-plugin-plugin</artifactId>
-			                <version>2.9</version>
-			            </plugin>
 			            <plugin>
 			                <groupId>org.apache.maven.plugins</groupId>
 			                <artifactId>maven-surefire-report-plugin</artifactId>
@@ -164,20 +159,6 @@
                     <target>1.6</target>
                 </configuration>
             </plugin>
-            <!-- 
-            <plugin>
-                <groupId>org.codehaus.plexus</groupId>
-                <artifactId>plexus-component-metadata</artifactId>
-                <version>${plexus.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate-metadata</goal>-->
-                            <!--goal>generate-test-metadata</goal -->
-                        <!-- </goals>
-                    </execution>
-                </executions>
-            </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-scm-plugin</artifactId>
@@ -265,14 +246,6 @@
                         <phase>verify</phase>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-plugin-plugin</artifactId>
-                <version>2.9</version>
-                <configuration>
-                    <goalPrefix>t7</goalPrefix>
-                </configuration>
             </plugin>
         <plugin>
           <artifactId>maven-release-plugin</artifactId>
@@ -416,43 +389,6 @@
                                 <phase>verify</phase>
                                 <goals>
                                     <goal>check</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>run-its</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-invoker-plugin</artifactId>
-                        <version>1.5</version>
-                        <configuration>
-                            <debug>true</debug>
-                            <projectsDirectory>src/it</projectsDirectory>
-                            <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
-                            <pomIncludes>
-                                <pomInclude>*/pom.xml</pomInclude>
-                            </pomIncludes>
-                            <preBuildHookScript>setup</preBuildHookScript>
-                            <postBuildHookScript>validate</postBuildHookScript>
-                            <localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
-                            <settingsFile>src/it/settings.xml</settingsFile>
-                            <goals>
-                                <goal>clean</goal>
-                                <goal>process-sources</goal>
-                            </goals>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>integration-test</id>
-                                <goals>
-                                    <goal>install</goal>
-                                    <goal>run</goal>
                                 </goals>
                             </execution>
                         </executions>
