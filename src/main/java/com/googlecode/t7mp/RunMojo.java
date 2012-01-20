@@ -37,6 +37,7 @@ import com.googlecode.t7mp.util.CatalinaOutPrintStream;
  * 
  * 
  */
+@Deprecated
 public class RunMojo extends AbstractT7TomcatMojo {
 
     protected Bootstrap bootstrap;
@@ -54,7 +55,8 @@ public class RunMojo extends AbstractT7TomcatMojo {
         getLog().info("Starting Tomcat ...");
         try {
             File catalinaout = new File(this.getCatalinaBase(), "/logs/catalina.out");
-            CatalinaOutPrintStream catalinaOutputStream = new CatalinaOutPrintStream(originalSystemErr, new FileOutputStream(catalinaout), isSuspendConsoleOutput());
+            CatalinaOutPrintStream catalinaOutputStream = new CatalinaOutPrintStream(originalSystemErr,
+                    new FileOutputStream(catalinaout), isSuspendConsoleOutput());
             System.setErr(catalinaOutputStream);
             bootstrap.init();
             final TomcatShutdownHook shutdownHook = new TomcatShutdownHook(bootstrap, catalinaOutputStream);

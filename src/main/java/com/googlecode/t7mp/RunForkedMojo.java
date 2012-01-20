@@ -39,6 +39,7 @@ import com.googlecode.t7mp.util.TomcatUtil;
  * 
  *
  */
+@Deprecated
 public class RunForkedMojo extends AbstractT7TomcatMojo {
 
     private static final long SLEEPTIME = 5000;
@@ -109,7 +110,8 @@ public class RunForkedMojo extends AbstractT7TomcatMojo {
             // do we have filepermissions on windows
             return;
         }
-        ProcessBuilder processBuilder = new ProcessBuilder("chmod", "755", "catalina.sh", "setclasspath.sh", "startup.sh", "shutdown.sh");
+        ProcessBuilder processBuilder = new ProcessBuilder("chmod", "755", "catalina.sh", "setclasspath.sh",
+                "startup.sh", "shutdown.sh");
         processBuilder.directory(binDirectory);
         processBuilder.redirectErrorStream(true);
         int exitValue = -1;

@@ -33,6 +33,7 @@ import com.googlecode.t7mp.util.SystemUtil;
  * 
  *
  */
+@Deprecated
 public class StopForkedMojo extends AbstractT7TomcatMojo {
 
     private static final long SLEEPTIME = 10000;
