@@ -15,16 +15,15 @@
  */
 package com.googlecode.t7mp.steps.deployment;
 
-import org.apache.maven.plugin.logging.Log;
-
 import com.google.common.base.Predicate;
 import com.googlecode.t7mp.AbstractArtifact;
+import com.googlecode.t7mp.PluginLog;
 
 class NoVersionPredicate implements Predicate<AbstractArtifact> {
 
-    private final Log log;
+    private final PluginLog log;
 
-    public NoVersionPredicate(Log log) {
+    public NoVersionPredicate(PluginLog log) {
         this.log = log;
     }
 

@@ -42,10 +42,12 @@ public class RunMojo extends AbstractT7TomcatMojo {
 
     protected Bootstrap bootstrap;
 
+    private final PluginLog log = new DefaultPluginLog();
+
     @Override
     @SuppressWarnings("unchecked")
     public void execute() throws MojoExecutionException, MojoFailureException {
-        PreConditions.checkConfiguredTomcatVersion(getLog(), tomcatVersion);
+        PreConditions.checkConfiguredTomcatVersion(log, tomcatVersion);
 
         getSetupStepSequence().execute(new DefaultContext(this));
 
@@ -60,7 +62,7 @@ public class RunMojo extends AbstractT7TomcatMojo {
             System.setErr(catalinaOutputStream);
             bootstrap.init();
             final TomcatShutdownHook shutdownHook = new TomcatShutdownHook(bootstrap, catalinaOutputStream);
-            ScannerSetup.configureScanners(shutdownHook, this);
+            ScannerSetup.configureScanners(shutdownHook, getBaseConfiguration(), log);
             if (tomcatSetAwait) {
                 Runtime.getRuntime().addShutdownHook(shutdownHook);
                 bootstrap.setAwait(tomcatSetAwait);
@@ -74,6 +76,10 @@ public class RunMojo extends AbstractT7TomcatMojo {
         } catch (Exception e) {
             throw new MojoExecutionException(e.getMessage(), e);
         }
+    }
+
+    private BaseConfiguration getBaseConfiguration() {
+        return null;
     }
 
     protected StepSequence getSetupStepSequence() {

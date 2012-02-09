@@ -21,7 +21,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.maven.plugin.logging.Log;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -30,48 +29,49 @@ import org.mockito.Mockito;
 
 import com.google.common.io.Files;
 import com.googlecode.t7mp.AbstractT7BaseMojo;
-import com.googlecode.t7mp.SysoutLog;
+import com.googlecode.t7mp.DefaultPluginLog;
+import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
 
 public class CopyConfigResourcesFromClasspathSequenceTest {
-    
+
     private File catalinaBaseDir;
-    private Context context = Mockito.mock(Context.class);
-    private AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
-    private Log log = new SysoutLog();
-    
-    
+    private final Context context = Mockito.mock(Context.class);
+    private final AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
+    private final PluginLog log = new DefaultPluginLog();
+
     @Before
-    public void setUp(){
+    public void setUp() {
         catalinaBaseDir = Files.createTempDir();
         Mockito.when(context.getMojo()).thenReturn(mojo);
         Mockito.when(context.getLog()).thenReturn(log);
         Mockito.when(mojo.getCatalinaBase()).thenReturn(catalinaBaseDir);
-        
+
         Step createTomcatDirectories = new CreateTomcatDirectoriesSequence();
         createTomcatDirectories.execute(context);
-        
+
         Assert.assertTrue(new File(catalinaBaseDir, "conf").exists());
         Assert.assertTrue(new File(catalinaBaseDir, "conf").isDirectory());
     }
-    
+
     @After
-    public void tearDown() throws IOException{
+    public void tearDown() throws IOException {
         FileUtils.deleteDirectory(catalinaBaseDir);
     }
-    
+
     @Test
-    public void testCreateDirectoryStep(){
-        String[] expectedFileNames = new String[]{"context.xml", "server.xml", "catalina.policy", "web.xml", "tomcat-users.xml", "logging.properties"};
+    public void testCreateDirectoryStep() {
+        String[] expectedFileNames = new String[] { "context.xml", "server.xml", "catalina.policy", "web.xml",
+                "tomcat-users.xml", "logging.properties" };
         Step step = new CopyConfigResourcesFromClasspathSequence();
         step.execute(context);
         File[] files = new File(catalinaBaseDir, "/conf/").listFiles();
         Assert.assertTrue(files.length == expectedFileNames.length);
         List<String> nameList = Arrays.asList(expectedFileNames);
-        for(File file : files){
+        for (File file : files) {
             Assert.assertTrue(nameList.contains(file.getName()));
         }
     }
-    
+
 }

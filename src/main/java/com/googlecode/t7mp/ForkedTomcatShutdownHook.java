@@ -21,8 +21,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import org.apache.maven.plugin.logging.Log;
-
 import com.googlecode.t7mp.util.TomcatUtil;
 
 /**
@@ -34,9 +32,9 @@ public final class ForkedTomcatShutdownHook extends Thread {
 
     private static final long SLEEPTIME = 10000;
     private final File binDirectory;
-    private final Log log;
+    private final PluginLog log;
 
-    public ForkedTomcatShutdownHook(File binDirectory, Log log) {
+    public ForkedTomcatShutdownHook(File binDirectory, PluginLog log) {
         this.binDirectory = binDirectory;
         this.log = log;
     }

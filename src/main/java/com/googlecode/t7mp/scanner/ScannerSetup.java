@@ -17,7 +17,8 @@ package com.googlecode.t7mp.scanner;
 
 import java.io.File;
 
-import com.googlecode.t7mp.AbstractT7BaseMojo;
+import com.googlecode.t7mp.BaseConfiguration;
+import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.ShutdownHook;
 
 /**
@@ -32,26 +33,26 @@ public final class ScannerSetup {
         //hide constructor
     }
 
-    public static void configureScanners(ShutdownHook shutdownHook, AbstractT7BaseMojo t7Mojo) {
+    public static void configureScanners(ShutdownHook shutdownHook, BaseConfiguration t7Mojo, PluginLog log) {
         if (!t7Mojo.isWebProject()) {
-            t7Mojo.getLog()
-                    .info("Project seems not to be an web-project (packaging 'war'), skip scanner configuration");
+            log.info("Project seems not to be an web-project (packaging 'war'), skip scanner configuration");
             return;
         }
         for (ScannerConfiguration scannerConfiguration : t7Mojo.getScanners()) {
             scannerConfiguration.setRootDirectory(t7Mojo.getWebappSourceDirectory());
-            scannerConfiguration.setWebappDirectory(new File(t7Mojo.getCatalinaBase(), "webapps/" + t7Mojo.getContextPath()));
-            Scanner scanner = new Scanner(scannerConfiguration, t7Mojo.getLog());
+            scannerConfiguration.setWebappDirectory(new File(t7Mojo.getCatalinaBase(), "webapps/"
+                    + t7Mojo.getContextPath()));
+            Scanner scanner = new Scanner(scannerConfiguration, log);
             scanner.start();
             shutdownHook.addScanner(scanner);
         }
         if (t7Mojo.isScanClasses()) {
             ScannerConfiguration scannerConfiguration = new ScannerConfiguration();
             scannerConfiguration.setRootDirectory(t7Mojo.getWebappClassDirectory());
-            scannerConfiguration.setWebappDirectory(new File(t7Mojo.getCatalinaBase(), "webapps/" + t7Mojo.getContextPath()
-                    + "/WEB-INF/classes"));
+            scannerConfiguration.setWebappDirectory(new File(t7Mojo.getCatalinaBase(), "webapps/"
+                    + t7Mojo.getContextPath() + "/WEB-INF/classes"));
             scannerConfiguration.setEndings("%"); // it's all or nothing
-            Scanner scanner = new Scanner(scannerConfiguration, t7Mojo.getLog());
+            Scanner scanner = new Scanner(scannerConfiguration, log);
             scanner.start();
             shutdownHook.addScanner(scanner);
         }

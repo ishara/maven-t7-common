@@ -15,18 +15,17 @@
  */
 package com.googlecode.t7mp;
 
-import org.apache.maven.plugin.logging.Log;
 
 /**
  * TODO Comment.
  * @author jbellmann
  *
  */
-public class LookInsideLog implements Log {
+public class LookInsideLog implements PluginLog {
 
-    private final Log realLog;
+    private final PluginLog realLog;
 
-    public LookInsideLog(Log realLog) {
+    public LookInsideLog(PluginLog realLog) {
         this.realLog = realLog;
     }
 
@@ -57,7 +56,8 @@ public class LookInsideLog implements Log {
         }
     }
 
-    private String formatMessage(CharSequence message) {
+    @Override
+    public String formatMessage(CharSequence message) {
         return "\t[t7-lookInside] -- " + message;
     }
 

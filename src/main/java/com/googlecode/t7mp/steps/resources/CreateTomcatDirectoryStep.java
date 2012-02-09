@@ -17,8 +17,7 @@ package com.googlecode.t7mp.steps.resources;
 
 import java.io.File;
 
-import org.apache.maven.plugin.logging.Log;
-
+import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
 
@@ -37,7 +36,7 @@ public class CreateTomcatDirectoryStep implements Step {
 
     @Override
     public void execute(Context context) {
-        final Log log = context.getLog();
+        final PluginLog log = context.getLog();
         final File createdDirectory = new File(context.getMojo().getCatalinaBase(), directory);
         boolean created = createdDirectory.mkdirs();
         if (created) {

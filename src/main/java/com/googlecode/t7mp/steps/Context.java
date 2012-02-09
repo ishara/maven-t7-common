@@ -15,9 +15,8 @@
  */
 package com.googlecode.t7mp.steps;
 
-import org.apache.maven.plugin.logging.Log;
-
 import com.googlecode.t7mp.AbstractT7BaseMojo;
+import com.googlecode.t7mp.PluginLog;
 
 /**
  * 
@@ -25,15 +24,15 @@ import com.googlecode.t7mp.AbstractT7BaseMojo;
  *
  */
 public interface Context {
-    
+
     AbstractT7BaseMojo getMojo();
-    
-    Log getLog();
-    
+
+    PluginLog getLog();
+
     void put(String key, Object value);
-    
+
     Object get(String key);
-    
+
     void clear();
 
 }

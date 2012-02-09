@@ -45,9 +45,11 @@ public class RunForkedMojo extends AbstractT7TomcatMojo {
     private static final long SLEEPTIME = 5000;
     private Process p;
 
+    private final PluginLog log = new DefaultPluginLog();
+
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        PreConditions.checkConfiguredTomcatVersion(getLog(), tomcatVersion);
+        PreConditions.checkConfiguredTomcatVersion(log, tomcatVersion);
 
         getSetupStepSequence().execute(new DefaultContext(this));
         setStartScriptPermissions(TomcatUtil.getBinDirectory(this.getCatalinaBase()));
@@ -74,8 +76,8 @@ public class RunForkedMojo extends AbstractT7TomcatMojo {
         int exitValue = -1;
         try {
             this.p = processBuilder.start();
-            final ForkedTomcatProcessShutdownHook shutdownHook = new ForkedTomcatProcessShutdownHook(this.p, getLog());
-            ScannerSetup.configureScanners(shutdownHook, this);
+            final ForkedTomcatProcessShutdownHook shutdownHook = new ForkedTomcatProcessShutdownHook(this.p, log);
+            ScannerSetup.configureScanners(shutdownHook, getBaseConfiguration(), log);
             Runtime.getRuntime().addShutdownHook(shutdownHook);
 
             InputStream is = this.p.getInputStream();
@@ -126,6 +128,10 @@ public class RunForkedMojo extends AbstractT7TomcatMojo {
             throw new TomcatSetupException(e.getMessage(), e);
         }
         getLog().debug("SetStartScriptPermission return value " + exitValue);
+    }
+
+    private BaseConfiguration getBaseConfiguration() {
+        return null;
     }
 
     class Runner extends Thread {

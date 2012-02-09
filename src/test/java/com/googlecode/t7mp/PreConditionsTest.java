@@ -16,14 +16,13 @@
 package com.googlecode.t7mp;
 
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.logging.Log;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 public class PreConditionsTest {
 
-    private Log log = Mockito.mock(Log.class);
+    private final PluginLog log = Mockito.mock(PluginLog.class);
 
     @Test(expected = MojoExecutionException.class)
     public void testWrongVersion_5() throws MojoExecutionException {
