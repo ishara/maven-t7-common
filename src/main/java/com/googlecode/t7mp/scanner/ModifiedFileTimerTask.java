@@ -24,10 +24,10 @@ import java.util.TimerTask;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.maven.plugin.logging.Log;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
+import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.util.FileUtil;
 
 public final class ModifiedFileTimerTask extends TimerTask {
@@ -38,9 +38,9 @@ public final class ModifiedFileTimerTask extends TimerTask {
     private final File rootDirectory;
     private final File webappDirectory;
     private final List<String> suffixe;
-    private final Log log;
+    private final PluginLog log;
 
-    public ModifiedFileTimerTask(File rootDirectory, File webappDirectory, List<String> suffixe, Log log) {
+    public ModifiedFileTimerTask(File rootDirectory, File webappDirectory, List<String> suffixe, PluginLog log) {
         this.rootDirectory = rootDirectory;
         this.webappDirectory = webappDirectory;
         this.suffixe = suffixe;

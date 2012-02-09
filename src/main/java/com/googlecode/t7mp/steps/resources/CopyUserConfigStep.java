@@ -27,9 +27,9 @@ import java.util.Collection;
 import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.maven.plugin.logging.Log;
 
 import com.googlecode.t7mp.SetupUtil;
+import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.TomcatSetupException;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
@@ -42,12 +42,12 @@ import com.googlecode.t7mp.util.FilesOnlyFileFilter;
  *
  */
 public class CopyUserConfigStep implements Step {
-    
+
     private File catalinaBaseDir;
     private File userConfigDir;
-    private Log log;
-    
-    private SetupUtil setupUtil = new CommonsSetupUtil();
+    private PluginLog log;
+
+    private final SetupUtil setupUtil = new CommonsSetupUtil();
 
     @Override
     public void execute(Context context) {
@@ -55,7 +55,7 @@ public class CopyUserConfigStep implements Step {
         this.catalinaBaseDir = context.getMojo().getCatalinaBase();
         this.userConfigDir = context.getMojo().getTomcatConfigDirectory();
         this.log = context.getLog();
-        
+
         //
         if (userConfigDir == null) {
             log.info("No directory for userConfigFiles configured.");
@@ -137,5 +137,5 @@ public class CopyUserConfigStep implements Step {
             IOUtils.closeQuietly(defaultOut);
         }
     }
-    
+
 }

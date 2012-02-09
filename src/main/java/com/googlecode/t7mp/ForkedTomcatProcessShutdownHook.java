@@ -18,8 +18,6 @@ package com.googlecode.t7mp;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.maven.plugin.logging.Log;
-
 import com.googlecode.t7mp.scanner.Scanner;
 
 /**
@@ -30,10 +28,10 @@ import com.googlecode.t7mp.scanner.Scanner;
 public class ForkedTomcatProcessShutdownHook extends Thread implements ShutdownHook {
 
     private final Process tomcatProcess;
-    private final Log log;
+    private final PluginLog log;
     private final List<Scanner> scanners = new ArrayList<Scanner>();
 
-    public ForkedTomcatProcessShutdownHook(Process tomcatProcess, Log log) {
+    public ForkedTomcatProcessShutdownHook(Process tomcatProcess, PluginLog log) {
         this.tomcatProcess = tomcatProcess;
         this.log = log;
     }

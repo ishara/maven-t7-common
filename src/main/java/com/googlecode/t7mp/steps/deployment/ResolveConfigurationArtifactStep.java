@@ -6,13 +6,12 @@ import java.util.Set;
 import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.maven.artifact.Artifact;
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.logging.Log;
 
 import com.googlecode.t7mp.AbstractT7BaseMojo;
 import com.googlecode.t7mp.ConfigurationArtifact;
+import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.TomcatSetupException;
+import com.googlecode.t7mp.maven.MyArtifactResolver;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
 import com.googlecode.t7mp.util.FileFilters;
@@ -29,12 +28,12 @@ public class ResolveConfigurationArtifactStep implements Step {
 
     protected AbstractT7BaseMojo mojo;
     protected MyArtifactResolver myArtifactResolver;
-    protected Log logger;
+    protected PluginLog logger;
 
     @Override
     public void execute(Context context) {
         this.mojo = context.getMojo();
-        this.logger = this.mojo.getLog();
+        this.logger = context.getLog();
         this.myArtifactResolver = new MyArtifactResolver(mojo);
         // skip this step if no configuationArtifact is found
         if (context.getMojo().getConfigArtifact() == null) {

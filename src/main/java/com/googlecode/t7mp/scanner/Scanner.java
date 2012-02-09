@@ -17,7 +17,7 @@ package com.googlecode.t7mp.scanner;
 
 import java.util.Timer;
 
-import org.apache.maven.plugin.logging.Log;
+import com.googlecode.t7mp.PluginLog;
 
 /**
  * Scanner that creates a Timer with a TimerTask.
@@ -32,9 +32,9 @@ public final class Scanner {
 
     private final ScannerConfiguration scannerConfiguration;
     private Timer timer;
-    private final Log log;
+    private final PluginLog log;
 
-    public Scanner(ScannerConfiguration scannerConfiguration, Log log) {
+    public Scanner(ScannerConfiguration scannerConfiguration, PluginLog log) {
         this.scannerConfiguration = scannerConfiguration;
         this.log = log;
     }
@@ -42,7 +42,9 @@ public final class Scanner {
     public void start() {
         log.info("Starting Scanner ....");
         this.timer = new Timer();
-        this.timer.scheduleAtFixedRate(new ModifiedFileTimerTask(scannerConfiguration.getRootDirectory(), scannerConfiguration.getWebappDirectory(), scannerConfiguration.getEndingsAsList(), log), DEFAULT_DELAY, scannerConfiguration.getInterval() * MILLIS);
+        this.timer.scheduleAtFixedRate(new ModifiedFileTimerTask(scannerConfiguration.getRootDirectory(),
+                scannerConfiguration.getWebappDirectory(), scannerConfiguration.getEndingsAsList(), log),
+                DEFAULT_DELAY, scannerConfiguration.getInterval() * MILLIS);
         log.info("Scanner started");
     }
 

@@ -17,8 +17,7 @@ package com.googlecode.t7mp.steps.resources;
 
 import java.util.Map;
 
-import org.apache.maven.plugin.logging.Log;
-
+import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
 
@@ -27,7 +26,7 @@ public class SetSystemPropertiesStep implements Step {
     @Override
     public void execute(Context context) {
         final String catalinaBasPath = context.getMojo().getCatalinaBase().getAbsolutePath();
-        final Log log = context.getLog();
+        final PluginLog log = context.getLog();
         System.setProperty("catalina.home", catalinaBasPath);
         log.debug("set systemproperty key: catalina.home to value " + catalinaBasPath);
         System.setProperty("catalina.base", catalinaBasPath);

@@ -19,7 +19,6 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.maven.plugin.logging.Log;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -28,33 +27,33 @@ import org.mockito.Mockito;
 
 import com.google.common.io.Files;
 import com.googlecode.t7mp.AbstractT7BaseMojo;
-import com.googlecode.t7mp.SysoutLog;
+import com.googlecode.t7mp.DefaultPluginLog;
+import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
 
 public class CreateTomcatDirectoryStepTest {
-    
+
     private File catalinaBaseDir;
-    private Context context = Mockito.mock(Context.class);
-    private AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
-    private Log log = new SysoutLog();
-    
-    
+    private final Context context = Mockito.mock(Context.class);
+    private final AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
+    private final PluginLog log = new DefaultPluginLog();
+
     @Before
-    public void setUp(){
-	catalinaBaseDir = Files.createTempDir();
+    public void setUp() {
+        catalinaBaseDir = Files.createTempDir();
         Mockito.when(context.getMojo()).thenReturn(mojo);
         Mockito.when(context.getLog()).thenReturn(log);
         Mockito.when(mojo.getCatalinaBase()).thenReturn(catalinaBaseDir);
     }
-    
+
     @After
-    public void tearDown() throws IOException{
+    public void tearDown() throws IOException {
         FileUtils.deleteDirectory(catalinaBaseDir);
     }
-    
+
     @Test
-    public void testCreateDirectoryStep(){
+    public void testCreateDirectoryStep() {
         testDirectory("conf");
         testDirectory("lib");
         testDirectory("webapps");
@@ -62,8 +61,8 @@ public class CreateTomcatDirectoryStepTest {
         testDirectory("temp");
         testDirectory("logs");
     }
-    
-    private void testDirectory(String directory){
+
+    private void testDirectory(String directory) {
         Step step = new CreateTomcatDirectoryStep(directory);
         step.execute(context);
         Assert.assertTrue(new File(catalinaBaseDir, directory).exists());

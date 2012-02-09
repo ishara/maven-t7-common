@@ -18,9 +18,9 @@ package com.googlecode.t7mp.steps;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.maven.plugin.logging.Log;
-
 import com.googlecode.t7mp.AbstractT7BaseMojo;
+import com.googlecode.t7mp.DefaultPluginLog;
+import com.googlecode.t7mp.PluginLog;
 
 /**
  * 
@@ -42,8 +42,8 @@ public class DefaultContext implements Context {
     }
 
     @Override
-    public Log getLog() {
-        return this.t7mojo.getLog();
+    public PluginLog getLog() {
+        return new DefaultPluginLog();
     }
 
     @Override

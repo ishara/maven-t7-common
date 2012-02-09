@@ -18,14 +18,12 @@ package com.googlecode.t7mp.steps.deployment;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.maven.model.Dependency;
-import org.apache.maven.plugin.logging.Log;
-
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import com.googlecode.t7mp.AbstractArtifact;
 import com.googlecode.t7mp.AbstractT7BaseMojo;
+import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.TomcatSetupException;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
@@ -35,14 +33,14 @@ public class CheckT7ArtifactsStep implements Step {
     private Predicate<AbstractArtifact> noVersionPredicate;
 
     private AbstractT7BaseMojo mojo;
-    private Log log;
-    private Collection<AbstractArtifact> noVersionArtifacts = Lists.newArrayList();
+    private PluginLog log;
+    private final Collection<AbstractArtifact> noVersionArtifacts = Lists.newArrayList();
 
     @SuppressWarnings("unchecked")
     @Override
     public void execute(Context context) {
         mojo = context.getMojo();
-        log = mojo.getLog();
+        log = context.getLog();
         noVersionPredicate = new NoVersionPredicate(log);
         log.debug("Fitler libs");
         noVersionArtifacts.addAll(Collections2.filter(mojo.getWebapps(), noVersionPredicate));
@@ -69,7 +67,7 @@ public class CheckT7ArtifactsStep implements Step {
             Collection<AbstractArtifact> noVersionsFound = Collections2.filter(noVersionArtifacts, noVersionPredicate);
             if (noVersionsFound.size() > 0) {
                 for (AbstractArtifact artifact : noVersionsFound) {
-                    mojo.getLog().error("No version configured for artifact --" + artifact.toString());
+                    log.error("No version configured for artifact --" + artifact.toString());
                 }
                 throw new TomcatSetupException("ConfigurationException");
             }
