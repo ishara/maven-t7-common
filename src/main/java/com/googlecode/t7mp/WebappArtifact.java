@@ -17,8 +17,6 @@ package com.googlecode.t7mp;
 
 import java.io.File;
 
-import org.apache.maven.artifact.Artifact;
-
 /**
  * TODO Comment.
  */
@@ -34,8 +32,8 @@ public class WebappArtifact extends AbstractArtifact {
         super();
     }
 
-    public WebappArtifact(Artifact artifact) {
-        super(artifact);
+    public WebappArtifact(String groupId, String artifactId, String version, String classifier, String type) {
+        super(groupId, artifactId, version, classifier, type);
     }
 
     @Override

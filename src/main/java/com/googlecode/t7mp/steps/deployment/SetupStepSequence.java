@@ -25,14 +25,12 @@ import com.googlecode.t7mp.steps.DefaultStepSequence;
  * @author jbellmann
  *
  */
+@Deprecated
 public class SetupStepSequence extends DefaultStepSequence {
 
     @Override
     public void execute(Context context) {
         AbstractT7BaseMojo mojo = context.getMojo();
-        if (mojo.isAddGithubRepository()) {
-            sequence.add(0, new AddRemoteRepositoryStep());
-        }
         super.execute(context);
     }
 

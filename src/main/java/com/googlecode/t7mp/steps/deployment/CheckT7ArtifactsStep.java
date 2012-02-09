@@ -18,8 +18,6 @@ package com.googlecode.t7mp.steps.deployment;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.maven.model.Dependency;
-
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
@@ -69,7 +67,7 @@ public class CheckT7ArtifactsStep implements Step {
             Collection<AbstractArtifact> noVersionsFound = Collections2.filter(noVersionArtifacts, noVersionPredicate);
             if (noVersionsFound.size() > 0) {
                 for (AbstractArtifact artifact : noVersionsFound) {
-                    mojo.getLog().error("No version configured for artifact --" + artifact.toString());
+                    log.error("No version configured for artifact --" + artifact.toString());
                 }
                 throw new TomcatSetupException("ConfigurationException");
             }

@@ -15,8 +15,9 @@
  */
 package com.googlecode.t7mp;
 
+import java.io.File;
+
 import org.apache.commons.lang.StringUtils;
-import org.apache.maven.artifact.Artifact;
 
 /**
  * TODO Comment.
@@ -57,19 +58,30 @@ public abstract class AbstractArtifact {
      */
     protected String classifier;
 
-    protected Artifact artifact;
+    //    protected Artifact artifact;
+
+    protected File file;
 
     AbstractArtifact() {
         // default constructor
     }
 
-    AbstractArtifact(Artifact artifact) {
-        this.setArtifact(artifact);
-        this.setGroupId(artifact.getGroupId());
-        this.setArtifactId(artifact.getArtifactId());
-        this.setVersion(artifact.getVersion());
-        this.setClassifier(artifact.getClassifier());
-        this.setType(artifact.getType());
+    //    AbstractArtifact(Artifact artifact) {
+    //        this.setArtifact(artifact);
+    //        this.setGroupId(artifact.getGroupId());
+    //        this.setArtifactId(artifact.getArtifactId());
+    //        this.setVersion(artifact.getVersion());
+    //        this.setClassifier(artifact.getClassifier());
+    //        this.setType(artifact.getType());
+    //    }
+
+    AbstractArtifact(String groupId, String artifactId, String version, String classifier, String type) {
+        this.setGroupId(groupId);
+        this.setArtifactId(artifactId);
+        this.setVersion(version);
+        this.setClassifier(classifier);
+        this.setType(type);
+
     }
 
     public String getGroupId() {
@@ -110,12 +122,20 @@ public abstract class AbstractArtifact {
         this.classifier = classifier;
     }
 
-    public Artifact getArtifact() {
-        return artifact;
+    //    public Artifact getArtifact() {
+    //        return artifact;
+    //    }
+    //
+    //    public void setArtifact(Artifact artifact) {
+    //        this.artifact = artifact;
+    //    }
+
+    public File getFile() {
+        return file;
     }
 
-    public void setArtifact(Artifact artifact) {
-        this.artifact = artifact;
+    public void setFile(File file) {
+        this.file = file;
     }
 
     /**

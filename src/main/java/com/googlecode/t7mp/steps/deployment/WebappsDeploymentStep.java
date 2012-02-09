@@ -60,7 +60,7 @@ public class WebappsDeploymentStep extends AbstractDeploymentStep {
             } else {
                 try {
                     String targetFileName = createTargetFileName(artifact);
-                    File sourceFile = artifact.getArtifact().getFile();
+                    File sourceFile = artifact.getFile();
                     File targetFile = new File(this.context.getMojo().getCatalinaBase(), "/webapps/" + targetFileName);
                     this.context.getLog().debug(
                             "Copy artifact from " + sourceFile.getAbsolutePath() + " to "
@@ -79,6 +79,6 @@ public class WebappsDeploymentStep extends AbstractDeploymentStep {
     }
 
     protected void unzipWebappArtifact(WebappArtifact webappArtifact) {
-        ZipUtil.unzip(webappArtifact.getArtifact().getFile(), new File(createTargetFileName(webappArtifact)));
+        ZipUtil.unzip(webappArtifact.getFile(), new File(createTargetFileName(webappArtifact)));
     }
 }

@@ -15,7 +15,6 @@
  */
 package com.googlecode.t7mp;
 
-import org.apache.maven.artifact.Artifact;
 
 /**
  * TODO Comment.
@@ -26,8 +25,8 @@ public class JarArtifact extends AbstractArtifact {
         super();
     }
 
-    public JarArtifact(Artifact artifact) {
-        super(artifact);
+    public JarArtifact(String groupId, String artifactId, String version, String classifier, String type) {
+        super(groupId, artifactId, version, classifier, type);
     }
 
     @Override

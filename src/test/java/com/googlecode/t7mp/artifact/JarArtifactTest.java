@@ -19,15 +19,13 @@ import org.apache.maven.artifact.Artifact;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.googlecode.t7mp.ArtifactConstants;
 import com.googlecode.t7mp.JarArtifact;
 
 public class JarArtifactTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(JarArtifact.class);
+    //    private static final Logger LOG = LoggerFactory.getLogger(JarArtifact.class);
 
     @Test
     public void testJarArtifact() {
