@@ -15,13 +15,12 @@
  */
 package com.googlecode.t7mp.steps;
 
-import org.apache.maven.plugin.logging.Log;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.googlecode.t7mp.AbstractT7BaseMojo;
+import com.googlecode.t7mp.BaseConfiguration;
+import com.googlecode.t7mp.configuration.ArtifactResolver;
 
 /**
  * 
@@ -30,24 +29,21 @@ import com.googlecode.t7mp.AbstractT7BaseMojo;
  */
 public class DefaultContextTest {
 
-    private AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
-    private Log log = Mockito.mock(Log.class);
-    
-    @Before
-    public void setUp(){
-        Mockito.when(mojo.getLog()).thenReturn(log);
-    }
-    
+    private final BaseConfiguration baseConfiguration = Mockito.mock(BaseConfiguration.class);
+    private final ArtifactResolver artifactResolver = Mockito.mock(ArtifactResolver.class);
+
+    //    private final PluginLog log = Mockito.mock(PluginLog.class);
+
     @Test
-    public void testDefaultContext(){
-        Context context = new DefaultContext(mojo);
+    public void testDefaultContext() {
+        Context context = new DefaultContext(artifactResolver, baseConfiguration);
         context.put("TEST_KEY", "TEST_VALUE");
         Assert.assertNotNull(context.get("TEST_KEY"));
-        Assert.assertEquals("TEST_VALUE",context.get("TEST_KEY"));
-        Assert.assertNotNull(context.getMojo());
-        Assert.assertNotNull(context.getLog());
+        Assert.assertEquals("TEST_VALUE", context.get("TEST_KEY"));
+        Assert.assertNotNull(context.getConfiguration());
+        Assert.assertNotNull(context.getArtifactResolver());
         context.clear();
         Assert.assertNull(context.get("TEST_KEY"));
     }
-    
+
 }

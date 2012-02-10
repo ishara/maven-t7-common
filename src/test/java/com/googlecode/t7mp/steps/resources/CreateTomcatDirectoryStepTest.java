@@ -26,9 +26,9 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.google.common.io.Files;
-import com.googlecode.t7mp.AbstractT7BaseMojo;
 import com.googlecode.t7mp.DefaultPluginLog;
 import com.googlecode.t7mp.PluginLog;
+import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
 

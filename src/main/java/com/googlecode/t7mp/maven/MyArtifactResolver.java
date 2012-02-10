@@ -26,7 +26,6 @@ import org.apache.maven.artifact.resolver.ArtifactResolver;
 import org.apache.maven.artifact.versioning.VersionRange;
 import org.apache.maven.plugin.MojoExecutionException;
 
-import com.googlecode.t7mp.AbstractT7BaseMojo;
 
 /**
  * Uses Maven-API to resolve the Artifacts.

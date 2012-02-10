@@ -25,7 +25,7 @@ import com.google.common.collect.Lists;
 import com.googlecode.t7mp.AbstractArtifact;
 import com.googlecode.t7mp.SetupUtil;
 import com.googlecode.t7mp.TomcatSetupException;
-import com.googlecode.t7mp.maven.MyArtifactResolver;
+import com.googlecode.t7mp.configuration.ResolutionException;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
 import com.googlecode.t7mp.util.CommonsSetupUtil;
@@ -34,14 +34,17 @@ public abstract class AbstractDeploymentStep implements Step {
 
     protected SetupUtil setupUtil = new CommonsSetupUtil();
 
-    protected MyArtifactResolver myArtifactResolver;
+    //    protected MyArtifactResolver myArtifactResolver;
 
     protected Context context;
+
+    //    protected ArtifactResolver artifactResolver;
 
     @Override
     public void execute(Context context) {
         this.context = context;
-        this.myArtifactResolver = new MyArtifactResolver(context.getMojo());
+        //        this.artifactResolver = context.getArtifactResolver();
+        //        this.myArtifactResolver = new MyArtifactResolver(context.getMojo());
 
         List<AbstractArtifact> artifactList = getArtifactList();
         artifactList = resolveArtifacts(artifactList);
@@ -60,7 +63,7 @@ public abstract class AbstractDeploymentStep implements Step {
             try {
                 String targetFileName = createTargetFileName(artifact);
                 File sourceFile = artifact.getFile();
-                File targetFile = new File(context.getMojo().getCatalinaBase(), "/lib/" + targetFileName);
+                File targetFile = new File(context.getConfiguration().getCatalinaBase(), "/lib/" + targetFileName);
                 context.getLog().debug(
                         "Copy artifact from " + sourceFile.getAbsolutePath() + " to " + targetFile.getAbsolutePath());
                 this.setupUtil.copy(new FileInputStream(sourceFile), new FileOutputStream(targetFile));
@@ -75,15 +78,17 @@ public abstract class AbstractDeploymentStep implements Step {
         for (AbstractArtifact abstractArtifact : artifacts) {
             context.getLog().debug("Resolve artifact for " + abstractArtifact.toString());
             //            if (!abstractArtifact.getGroupId().equals("local")) {
-            Artifact artifact;
+            File artifact;
             try {
-                artifact = myArtifactResolver.resolve(abstractArtifact.getGroupId(), abstractArtifact.getArtifactId(),
-                        abstractArtifact.getVersion(), abstractArtifact.getClassifier(), abstractArtifact.getType(),
-                        Artifact.SCOPE_COMPILE);
-            } catch (MojoExecutionException e) {
+                //                artifact = myArtifactResolver.resolve(abstractArtifact.getGroupId(), abstractArtifact.getArtifactId(),
+                //                        abstractArtifact.getVersion(), abstractArtifact.getClassifier(), abstractArtifact.getType(),
+                //                        Artifact.SCOPE_COMPILE);
+
+                artifact = context.getArtifactResolver().resolveArtifact(abstractArtifact.getArtifactCoordinates());
+            } catch (ResolutionException e) {
                 throw new TomcatSetupException(e.getMessage(), e);
             }
-            abstractArtifact.setArtifact(artifact);
+            abstractArtifact.setFile(artifact);
             resolvedArtifacts.add(abstractArtifact);
             //            } else {
             //                Artifact artifact = new DefaultArtifact(abstractArtifact.getGroupId(),

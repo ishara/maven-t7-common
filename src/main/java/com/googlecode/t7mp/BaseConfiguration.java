@@ -184,6 +184,12 @@ public class BaseConfiguration {
      */
     protected ConfigurationArtifact configArtifact = null;
 
+    /**
+     * 
+     * @parameter default-value="false"
+     */
+    protected boolean downloadTomcatExamples = false;
+
     public boolean isTomcatSetAwait() {
         return tomcatSetAwait;
     }
@@ -388,4 +394,11 @@ public class BaseConfiguration {
         return this.packaging.equals("war");
     }
 
+    public boolean isDownloadTomcatExamples() {
+        return downloadTomcatExamples;
+    }
+
+    public void setDownloadTomcatExamples(boolean downloadTomcatExamples) {
+        this.downloadTomcatExamples = downloadTomcatExamples;
+    }
 }

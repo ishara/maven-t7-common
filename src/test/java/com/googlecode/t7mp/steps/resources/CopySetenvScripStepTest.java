@@ -21,67 +21,65 @@ import java.io.IOException;
 import junit.framework.Assert;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.maven.plugin.logging.Log;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.google.common.io.Files;
-import com.googlecode.t7mp.AbstractT7BaseMojo;
-import com.googlecode.t7mp.SysoutLog;
+import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.DefaultContext;
 import com.googlecode.t7mp.steps.Step;
 
 public class CopySetenvScripStepTest {
-	
+
     private File catalinaBaseDir;
-    private AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
-    private Log log = new SysoutLog();
-	
-    
+    private final AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
+
+    //    private final PluginLog log = new DefaultPluginLog();
+
     @Before
-    public void setUp(){
-	catalinaBaseDir = Files.createTempDir();
-    	Assert.assertTrue(catalinaBaseDir.exists());
-    	Assert.assertNotNull(catalinaBaseDir);
-    	Assert.assertTrue(catalinaBaseDir.exists());
-    	
-    	Mockito.when(mojo.getCatalinaBase()).thenReturn(catalinaBaseDir);
-    	Mockito.when(mojo.getLog()).thenReturn(log);
+    public void setUp() {
+        catalinaBaseDir = Files.createTempDir();
+        Assert.assertTrue(catalinaBaseDir.exists());
+        Assert.assertNotNull(catalinaBaseDir);
+        Assert.assertTrue(catalinaBaseDir.exists());
+
+        Mockito.when(mojo.getCatalinaBase()).thenReturn(catalinaBaseDir);
+        //        Mockito.when(mojo.getLog()).thenReturn(log);
     }
-    
+
     @After
-    public void tearDown() throws IOException{
-    	FileUtils.deleteDirectory(catalinaBaseDir);
+    public void tearDown() throws IOException {
+        FileUtils.deleteDirectory(catalinaBaseDir);
     }
-    
-	@Test
-	public void testCopySetenvScriptStepNotExist(){
-		Context context = new DefaultContext(mojo);
-		Step step = new CopySetenvScriptStep();
-		step.execute(context);
-	}
-	
-	@Test
-	public void testCopySetenvScriptStep(){
-		String setenvScriptPath = getClass().getResource("/com/googlecode/t7mp/bin/setenv.sh").getPath();
-		File t7mpDirectory = new File(setenvScriptPath).getParentFile().getParentFile();
-		File confDirectory = new File(t7mpDirectory, "/conf/");
-		Assert.assertNotNull(confDirectory);
-		Assert.assertTrue(confDirectory.exists());
-		Mockito.when(mojo.getTomcatConfigDirectory()).thenReturn(new File(t7mpDirectory, "/conf/"));
-		Context context = new DefaultContext(mojo);
-		Step step = new CopySetenvScriptStep();
-		step.execute(context);
-		File binDirectory = new File(catalinaBaseDir, "/bin/");
-		Assert.assertNotNull(binDirectory);
-		Assert.assertTrue(binDirectory.exists());
-		File copyiedSetenvScript = new File(binDirectory, "setenv.sh");
-		
-		Assert.assertNotNull(copyiedSetenvScript);
-		Assert.assertTrue(copyiedSetenvScript.exists());
-	}
+
+    @Test
+    public void testCopySetenvScriptStepNotExist() {
+        Context context = new DefaultContext(mojo);
+        Step step = new CopySetenvScriptStep();
+        step.execute(context);
+    }
+
+    @Test
+    public void testCopySetenvScriptStep() {
+        String setenvScriptPath = getClass().getResource("/com/googlecode/t7mp/bin/setenv.sh").getPath();
+        File t7mpDirectory = new File(setenvScriptPath).getParentFile().getParentFile();
+        File confDirectory = new File(t7mpDirectory, "/conf/");
+        Assert.assertNotNull(confDirectory);
+        Assert.assertTrue(confDirectory.exists());
+        Mockito.when(mojo.getTomcatConfigDirectory()).thenReturn(new File(t7mpDirectory, "/conf/"));
+        Context context = new DefaultContext(mojo);
+        Step step = new CopySetenvScriptStep();
+        step.execute(context);
+        File binDirectory = new File(catalinaBaseDir, "/bin/");
+        Assert.assertNotNull(binDirectory);
+        Assert.assertTrue(binDirectory.exists());
+        File copyiedSetenvScript = new File(binDirectory, "setenv.sh");
+
+        Assert.assertNotNull(copyiedSetenvScript);
+        Assert.assertTrue(copyiedSetenvScript.exists());
+    }
 
 }

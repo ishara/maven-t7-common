@@ -15,7 +15,7 @@
  */
 package com.googlecode.t7mp.steps.deployment;
 
-import com.googlecode.t7mp.AbstractT7BaseMojo;
+import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.DefaultStepSequence;
 

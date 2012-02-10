@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.googlecode.t7mp.steps.deployment;
+package com.googlecode.t7mp.maven;
 
 import java.util.Collection;
 import java.util.Map;

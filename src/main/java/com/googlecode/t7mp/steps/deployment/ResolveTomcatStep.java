@@ -23,10 +23,11 @@ import java.util.UUID;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 
-import com.googlecode.t7mp.AbstractT7TomcatMojo;
+import com.googlecode.t7mp.BaseConfiguration;
 import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.TomcatSetupException;
-import com.googlecode.t7mp.maven.MyArtifactResolver;
+import com.googlecode.t7mp.configuration.ArtifactResolver;
+import com.googlecode.t7mp.configuration.ResolutionException;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
 import com.googlecode.t7mp.util.ZipUtil;
@@ -43,20 +44,23 @@ public class ResolveTomcatStep implements Step {
     public static final String TOMCAT_ARTIFACTID = "tomcat";
     public static final String TOMCAT_TYPE = "zip";
 
-    protected AbstractT7TomcatMojo mojo;
-    protected MyArtifactResolver myArtifactResolver;
+    //    protected AbstractT7TomcatMojo mojo;
+    //    protected MyArtifactResolver myArtifactResolver;
     protected PluginLog logger;
 
-    //    protected
+    protected BaseConfiguration configuration;
+    protected ArtifactResolver artifactResolver;
 
     @Override
     public void execute(Context context) {
-        this.mojo = (AbstractT7TomcatMojo) context.getMojo();
-        this.myArtifactResolver = new MyArtifactResolver(context.getMojo());
+        //        this.mojo = (AbstractT7TomcatMojo) context.getMojo();
+        //        this.myArtifactResolver = new MyArtifactResolver(context.getMojo());
+        this.configuration = context.getConfiguration();
+        this.artifactResolver = context.getArtifactResolver();
         this.logger = context.getLog();
         String version = null;
         String configuredVersion = context.getMojo().getTomcatVersion();
-        if (mojo.isDownloadTomcatExamples()) {
+        if (this.configuration.isDownloadTomcatExamples()) {
             logger.info("Resolve Tomcat with 'docs' and 'examples'");
             version = configuredVersion;
         } else {
@@ -69,11 +73,13 @@ public class ResolveTomcatStep implements Step {
 
         File unpackDirectory = null;
         try {
-            Artifact artifact = resolveTomcatArtifact(version);
+            //            Artifact artifact = resolveTomcatArtifact(version);
+            File resolvedArtifact = artifactResolver.resolveArtifact(getCoordinates(version));
             unpackDirectory = getUnpackDirectory();
-            ZipUtil.unzip(artifact.getFile(), unpackDirectory);
+            //            ZipUtil.unzip(artifact.getFile(), unpackDirectory);
+            ZipUtil.unzip(resolvedArtifact, unpackDirectory);
             copyToTomcatDirectory(unpackDirectory);
-        } catch (MojoExecutionException e) {
+        } catch (ResolutionException e) {
             logger.error(e.getMessage(), e);
             throw new TomcatSetupException(e.getMessage(), e);
         } catch (IOException e) {
@@ -91,6 +97,10 @@ public class ResolveTomcatStep implements Step {
         }
     }
 
+    private String getCoordinates(String version) {
+        return null;
+    }
+
     private void copyToTomcatDirectory(File unpackDirectory) throws IOException {
         File[] files = unpackDirectory.listFiles(new FileFilter() {
             @Override
@@ -99,14 +109,14 @@ public class ResolveTomcatStep implements Step {
             }
         });
         // should only be one
-        FileUtils.copyDirectory(files[0], this.mojo.getCatalinaBase());
+        FileUtils.copyDirectory(files[0], this.configuration.getCatalinaBase());
     }
 
-    protected Artifact resolveTomcatArtifact(String tomcatVersion) throws MojoExecutionException {
-        Artifact artifact = myArtifactResolver.resolve(TOMCAT_GROUPID, TOMCAT_ARTIFACTID, tomcatVersion, null,
-                TOMCAT_TYPE, Artifact.SCOPE_COMPILE);
-        return artifact;
-    }
+    //    protected Artifact resolveTomcatArtifact(String tomcatVersion) throws MojoExecutionException {
+    //        Artifact artifact = myArtifactResolver.resolve(TOMCAT_GROUPID, TOMCAT_ARTIFACTID, tomcatVersion, null,
+    //                TOMCAT_TYPE, Artifact.SCOPE_COMPILE);
+    //        return artifact;
+    //    }
 
     protected File getUnpackDirectory() {
         File tempDir = new File(System.getProperty("java.io.tmpdir"));

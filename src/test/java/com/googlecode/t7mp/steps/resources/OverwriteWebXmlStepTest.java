@@ -17,44 +17,43 @@ package com.googlecode.t7mp.steps.resources;
 
 import java.io.File;
 
-import org.apache.maven.plugin.logging.Log;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.googlecode.t7mp.AbstractT7BaseMojo;
-import com.googlecode.t7mp.SysoutLog;
+import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.DefaultContext;
 import com.googlecode.t7mp.steps.Step;
 
 public class OverwriteWebXmlStepTest {
-	
+
     private File catalinaBaseDir;
-    private AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
-    private Log log = new SysoutLog();
-    
+    private final AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
+
+    //    private final PluginLog log = new DefaultPluginLog();
+
     @Before
-    public void setUp(){
-    	Mockito.when(mojo.getCatalinaBase()).thenReturn(catalinaBaseDir);
-    	Mockito.when(mojo.getLog()).thenReturn(log);
+    public void setUp() {
+        Mockito.when(mojo.getCatalinaBase()).thenReturn(catalinaBaseDir);
+        //        Mockito.when(mojo.getLog()).thenReturn(log);
     }
-	
-	@Test
-	public void testOverwriteWebXmlIsNull(){
-    	Mockito.when(mojo.getOverwriteWebXML()).thenReturn(null);
-		Context context = new DefaultContext(mojo);
-		Step step = new OverwriteWebXmlStep();
-		step.execute(context);
-	}
-	
-	@Test
-	public void testOverwriteWebXmlDoesNotExist(){
-		File notExistentFile = new File("/klaus/peter");
-    	Mockito.when(mojo.getOverwriteWebXML()).thenReturn(notExistentFile);
-		Context context = new DefaultContext(mojo);
-		Step step = new OverwriteWebXmlStep();
-		step.execute(context);
-	}
+
+    @Test
+    public void testOverwriteWebXmlIsNull() {
+        Mockito.when(mojo.getOverwriteWebXML()).thenReturn(null);
+        Context context = new DefaultContext(mojo);
+        Step step = new OverwriteWebXmlStep();
+        step.execute(context);
+    }
+
+    @Test
+    public void testOverwriteWebXmlDoesNotExist() {
+        File notExistentFile = new File("/klaus/peter");
+        Mockito.when(mojo.getOverwriteWebXML()).thenReturn(notExistentFile);
+        Context context = new DefaultContext(mojo);
+        Step step = new OverwriteWebXmlStep();
+        step.execute(context);
+    }
 
 }

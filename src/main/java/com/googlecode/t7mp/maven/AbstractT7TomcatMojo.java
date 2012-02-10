@@ -1,4 +1,4 @@
-package com.googlecode.t7mp;
+package com.googlecode.t7mp.maven;
 
 /**
  * 

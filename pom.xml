@@ -260,7 +260,6 @@
 
     <dependencies>
         <!-- MAVEN -->
-        <!--
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-model</artifactId>
@@ -306,7 +305,6 @@
             <artifactId>maven-archiver</artifactId>
             <version>2.4.1</version>
         </dependency>
-        -->
 
         <!-- 
 	   <dependency>-->
@@ -363,7 +361,6 @@
             <version>4.8.2</version>
             <scope>test</scope>
         </dependency>
-        <!-- 
         <dependency>
             <groupId>org.apache.maven.shared</groupId>
             <artifactId>maven-plugin-testing-tools</artifactId>
@@ -375,7 +372,7 @@
             <artifactId>maven-plugin-testing-harness</artifactId>
             <scope>test</scope>
             <version>1.1</version>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>

@@ -15,7 +15,6 @@
  */
 package com.googlecode.t7mp;
 
-import org.apache.maven.plugin.MojoExecutionException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -24,23 +23,23 @@ public class PreConditionsTest {
 
     private final PluginLog log = Mockito.mock(PluginLog.class);
 
-    @Test(expected = MojoExecutionException.class)
-    public void testWrongVersion_5() throws MojoExecutionException {
+    @Test(expected = TomcatSetupException.class)
+    public void testWrongVersion_5() {
         PreConditions.checkConfiguredTomcatVersion(log, "5.x");
     }
 
-    @Test(expected = MojoExecutionException.class)
-    public void testWrongVersion_8() throws MojoExecutionException {
+    @Test(expected = TomcatSetupException.class)
+    public void testWrongVersion_8() {
         PreConditions.checkConfiguredTomcatVersion(log, "8.x");
     }
 
     @Test
-    public void testCorrectVersion_7() throws MojoExecutionException {
+    public void testCorrectVersion_7() {
         PreConditions.checkConfiguredTomcatVersion(log, "7.x");
     }
 
     @Test
-    public void testCorrectVersion_6() throws MojoExecutionException {
+    public void testCorrectVersion_6() {
         PreConditions.checkConfiguredTomcatVersion(log, "6.x");
     }
 

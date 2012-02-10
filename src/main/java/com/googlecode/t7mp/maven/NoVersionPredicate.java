@@ -13,24 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.googlecode.t7mp;
+package com.googlecode.t7mp.maven;
 
-import org.apache.maven.plugin.testing.AbstractMojoTestCase;
+import com.google.common.base.Predicate;
+import com.googlecode.t7mp.AbstractArtifact;
+import com.googlecode.t7mp.PluginLog;
 
-public abstract class AbstractT7MojoTestCase extends AbstractMojoTestCase {
+/**
+ * 
+ * @author jbellmann
+ *
+ */
+class NoVersionPredicate implements Predicate<AbstractArtifact> {
 
-    public AbstractT7MojoTestCase() {
-        super();
+    private final PluginLog log;
+
+    public NoVersionPredicate(PluginLog log) {
+        this.log = log;
     }
 
-    protected void setUp() throws Exception {
-        super.setUp();
-        System.out.println("MOJO-TEST-CASE");
-        // yourself
-    }
-
-    protected void tearDown() throws Exception {
-        //first yourself
-        super.tearDown();
+    @Override
+    public boolean apply(AbstractArtifact artifact) {
+        boolean apply = (artifact.getVersion() == null);
+        if (apply) {
+            log.debug("Artifact " + artifact.toString() + " has no version configured.");
+        }
+        return apply;
     }
 }

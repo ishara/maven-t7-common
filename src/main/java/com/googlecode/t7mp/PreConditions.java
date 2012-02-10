@@ -20,13 +20,13 @@ package com.googlecode.t7mp;
  * @author jbellmann
  *
  */
-final class PreConditions {
+public final class PreConditions {
 
     private PreConditions() {
         throw new RuntimeException("Dont call this private constructor");
     }
 
-    static void checkConfiguredTomcatVersion(PluginLog log, String tomcatVersion) {
+    public static void checkConfiguredTomcatVersion(PluginLog log, String tomcatVersion) {
         if (!tomcatVersion.startsWith("7.") && !tomcatVersion.startsWith("6.")) {
             log.info("");
             log.info("");

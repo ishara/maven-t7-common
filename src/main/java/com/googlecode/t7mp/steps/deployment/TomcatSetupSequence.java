@@ -15,6 +15,7 @@
  */
 package com.googlecode.t7mp.steps.deployment;
 
+import com.googlecode.t7mp.maven.CheckT7ArtifactsStep;
 import com.googlecode.t7mp.steps.resources.ConfigFilesSequence;
 import com.googlecode.t7mp.steps.resources.CopyConfigResourcesFromClasspathSequence;
 import com.googlecode.t7mp.steps.resources.SetSystemPropertiesStep;

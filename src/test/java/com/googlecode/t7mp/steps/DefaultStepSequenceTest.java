@@ -22,7 +22,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.googlecode.t7mp.AbstractT7BaseMojo;
+import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
 
 public class DefaultStepSequenceTest implements StepExecutionListener {
 

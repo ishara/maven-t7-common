@@ -20,6 +20,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.googlecode.t7mp.maven.CheckT7ArtifactsStep;
 import com.googlecode.t7mp.steps.Step;
 import com.googlecode.t7mp.steps.resources.ConfigFilesSequence;
 import com.googlecode.t7mp.steps.resources.CopyConfigResourcesFromClasspathSequence;

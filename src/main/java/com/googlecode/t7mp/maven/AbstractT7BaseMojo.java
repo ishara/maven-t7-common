@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.googlecode.t7mp;
+package com.googlecode.t7mp.maven;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -30,6 +30,8 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.archiver.manager.ArchiverManager;
 
+import com.googlecode.t7mp.AbstractArtifact;
+import com.googlecode.t7mp.ConfigurationArtifact;
 import com.googlecode.t7mp.scanner.ScannerConfiguration;
 
 /**

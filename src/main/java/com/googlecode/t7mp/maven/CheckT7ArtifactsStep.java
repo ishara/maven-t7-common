@@ -13,16 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.googlecode.t7mp.steps.deployment;
+package com.googlecode.t7mp.maven;
 
 import java.util.Collection;
 import java.util.List;
+
+import org.apache.maven.model.Dependency;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import com.googlecode.t7mp.AbstractArtifact;
-import com.googlecode.t7mp.AbstractT7BaseMojo;
 import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.TomcatSetupException;
 import com.googlecode.t7mp.steps.Context;

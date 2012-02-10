@@ -20,8 +20,8 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 
-import com.googlecode.t7mp.AbstractT7BaseMojo;
 import com.googlecode.t7mp.TomcatSetupException;
+import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
 import com.googlecode.t7mp.util.TomcatUtil;

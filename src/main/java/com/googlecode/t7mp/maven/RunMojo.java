@@ -13,8 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.googlecode.t7mp;
+package com.googlecode.t7mp.maven;
 
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
 
 /**
  * 
@@ -25,6 +27,11 @@ package com.googlecode.t7mp;
  */
 @Deprecated
 public class RunMojo extends AbstractT7TomcatMojo {
+
+    @Override
+    public void execute() throws MojoExecutionException, MojoFailureException {
+
+    }
 
     //    protected Bootstrap bootstrap;
     //

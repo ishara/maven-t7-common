@@ -15,7 +15,8 @@
  */
 package com.googlecode.t7mp.artifact;
 
-import org.apache.maven.artifact.Artifact;
+import java.io.File;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -48,20 +49,15 @@ public class JarArtifactTest {
 
     @Test
     public void testArtifactConstructor() {
-        Artifact artifact = Mockito.mock(Artifact.class);
-        Mockito.when(artifact.getArtifactId()).thenReturn(ArtifactConstants.ARTIFACTID);
-        Mockito.when(artifact.getGroupId()).thenReturn(ArtifactConstants.GROUPID);
-        Mockito.when(artifact.getVersion()).thenReturn(ArtifactConstants.VERSION);
-        Mockito.when(artifact.getClassifier()).thenReturn(ArtifactConstants.CLASSIFIER);
-        Mockito.when(artifact.getType()).thenReturn(ArtifactConstants.JAR_TYPE);
-        JarArtifact jarArtifact = new JarArtifact(artifact);
+        JarArtifact jarArtifact = new JarArtifact(ArtifactConstants.GROUPID, ArtifactConstants.ARTIFACTID,
+                ArtifactConstants.VERSION, ArtifactConstants.CLASSIFIER, ArtifactConstants.JAR_TYPE);
+        jarArtifact.setFile(Mockito.mock(File.class));
 
         Assert.assertEquals(ArtifactConstants.GROUPID, jarArtifact.getGroupId());
         Assert.assertEquals(ArtifactConstants.ARTIFACTID, jarArtifact.getArtifactId());
         Assert.assertEquals(ArtifactConstants.JAR_TYPE, jarArtifact.getType());
         Assert.assertEquals(ArtifactConstants.CLASSIFIER, jarArtifact.getClassifier());
-        Assert.assertNotNull(jarArtifact.getArtifact());
-        Assert.assertEquals(artifact, jarArtifact.getArtifact());
+        Assert.assertNotNull(jarArtifact.getFile());
     }
 
 }
