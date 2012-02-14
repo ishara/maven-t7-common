@@ -75,7 +75,7 @@ public abstract class AbstractArtifact {
     //        this.setType(artifact.getType());
     //    }
 
-    AbstractArtifact(String groupId, String artifactId, String version, String classifier, String type) {
+    protected AbstractArtifact(String groupId, String artifactId, String version, String classifier, String type) {
         this.setGroupId(groupId);
         this.setArtifactId(artifactId);
         this.setVersion(version);
