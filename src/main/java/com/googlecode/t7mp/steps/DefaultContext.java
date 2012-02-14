@@ -21,7 +21,7 @@ import java.util.Map;
 import com.googlecode.t7mp.BaseConfiguration;
 import com.googlecode.t7mp.DefaultPluginLog;
 import com.googlecode.t7mp.PluginLog;
-import com.googlecode.t7mp.configuration.ArtifactResolver;
+import com.googlecode.t7mp.configuration.PluginArtifactResolver;
 import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
 
 /**
@@ -36,14 +36,14 @@ public class DefaultContext implements Context {
 
     protected Map<String, Object> context = new HashMap<String, Object>();
 
-    protected ArtifactResolver artifactResolver;
+    protected PluginArtifactResolver artifactResolver;
     protected BaseConfiguration baseConfiguration;
 
     public DefaultContext(AbstractT7BaseMojo t7mojo) {
         this.t7mojo = t7mojo;
     }
 
-    public DefaultContext(ArtifactResolver artifactResolver, BaseConfiguration baseConfiguration) {
+    public DefaultContext(PluginArtifactResolver artifactResolver, BaseConfiguration baseConfiguration) {
         this.artifactResolver = artifactResolver;
         this.baseConfiguration = baseConfiguration;
     }
@@ -60,7 +60,7 @@ public class DefaultContext implements Context {
     }
 
     @Override
-    public ArtifactResolver getArtifactResolver() {
+    public PluginArtifactResolver getArtifactResolver() {
         return artifactResolver;
     }
 

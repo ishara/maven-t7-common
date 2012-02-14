@@ -26,7 +26,7 @@ import org.apache.commons.lang.StringUtils;
 import com.googlecode.t7mp.BaseConfiguration;
 import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.TomcatSetupException;
-import com.googlecode.t7mp.configuration.ArtifactResolver;
+import com.googlecode.t7mp.configuration.PluginArtifactResolver;
 import com.googlecode.t7mp.configuration.ResolutionException;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
@@ -49,7 +49,7 @@ public class ResolveTomcatStep implements Step {
     protected PluginLog logger;
 
     protected BaseConfiguration configuration;
-    protected ArtifactResolver artifactResolver;
+    protected PluginArtifactResolver artifactResolver;
 
     @Override
     public void execute(Context context) {

@@ -17,7 +17,7 @@ package com.googlecode.t7mp.steps;
 
 import com.googlecode.t7mp.BaseConfiguration;
 import com.googlecode.t7mp.PluginLog;
-import com.googlecode.t7mp.configuration.ArtifactResolver;
+import com.googlecode.t7mp.configuration.PluginArtifactResolver;
 import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
 
 /**
@@ -32,7 +32,7 @@ public interface Context {
 
     PluginLog getLog();
 
-    ArtifactResolver getArtifactResolver();
+    PluginArtifactResolver getArtifactResolver();
 
     BaseConfiguration getConfiguration();
 

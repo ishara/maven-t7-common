@@ -7,7 +7,7 @@ import java.io.File;
  * @author jbellmann
  *
  */
-public interface ArtifactResolver {
+public interface PluginArtifactResolver {
 
     File resolveArtifact(String coordinates) throws ResolutionException;
 

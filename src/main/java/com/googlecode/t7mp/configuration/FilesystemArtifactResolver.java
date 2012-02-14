@@ -10,7 +10,7 @@ import com.googlecode.t7mp.Assert;
  * @author jbellmann
  *
  */
-public final class FilesystemArtifactResolver implements ArtifactResolver {
+public final class FilesystemArtifactResolver implements PluginArtifactResolver {
 
     @Override
     public File resolveArtifact(String coordinates) throws ResolutionException {

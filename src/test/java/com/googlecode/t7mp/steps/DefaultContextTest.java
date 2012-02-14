@@ -20,7 +20,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.googlecode.t7mp.BaseConfiguration;
-import com.googlecode.t7mp.configuration.ArtifactResolver;
+import com.googlecode.t7mp.configuration.PluginArtifactResolver;
 
 /**
  * 
@@ -30,7 +30,7 @@ import com.googlecode.t7mp.configuration.ArtifactResolver;
 public class DefaultContextTest {
 
     private final BaseConfiguration baseConfiguration = Mockito.mock(BaseConfiguration.class);
-    private final ArtifactResolver artifactResolver = Mockito.mock(ArtifactResolver.class);
+    private final PluginArtifactResolver artifactResolver = Mockito.mock(PluginArtifactResolver.class);
 
     //    private final PluginLog log = Mockito.mock(PluginLog.class);
 
