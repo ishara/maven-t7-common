@@ -18,9 +18,9 @@ package com.googlecode.t7mp.steps.resources;
 import java.io.File;
 import java.io.IOException;
 
+import com.googlecode.t7mp.BaseConfiguration;
 import com.googlecode.t7mp.SetupUtil;
 import com.googlecode.t7mp.TomcatSetupException;
-import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
 import com.googlecode.t7mp.util.CommonsSetupUtil;
@@ -37,16 +37,17 @@ public class CopyProjectWebappStep implements Step {
     
     @Override
     public void execute(Context context) {
-        final AbstractT7BaseMojo mojo = context.getMojo();
-        final File webappOutputDirectory = mojo.getWebappOutputDirectory();
-        if (!mojo.isWebProject()) {
+//        final AbstractT7BaseMojo mojo = context.getMojo();
+        final BaseConfiguration configuration = context.getConfiguration();
+        final File webappOutputDirectory = configuration.getWebappOutputDirectory();
+        if (!configuration.isWebProject()) {
             return;
         }
         if ((webappOutputDirectory == null) || (!webappOutputDirectory.exists())) {
             return;
         }
         try {
-            this.setupUtil.copyDirectory(webappOutputDirectory, new File(mojo.getCatalinaBase(), "/webapps/" + mojo.getContextPath()));
+            this.setupUtil.copyDirectory(webappOutputDirectory, new File(configuration.getCatalinaBase(), "/webapps/" + configuration.getContextPath()));
         } catch (IOException e) {
             throw new TomcatSetupException(e.getMessage(), e);
         }

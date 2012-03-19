@@ -18,9 +18,9 @@ package com.googlecode.t7mp.steps.resources;
 import java.io.File;
 import java.io.IOException;
 
+import com.googlecode.t7mp.BaseConfiguration;
 import com.googlecode.t7mp.SetupUtil;
 import com.googlecode.t7mp.TomcatSetupException;
-import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
 import com.googlecode.t7mp.util.CommonsSetupUtil;
@@ -37,14 +37,14 @@ public class CopyTestContextXmlStep implements Step {
 
     @Override
     public void execute(Context context) {
-        final AbstractT7BaseMojo mojo = context.getMojo();
-        final File contextXml = mojo.getContextFile();
+        final BaseConfiguration configuration = context.getConfiguration();
+        final File contextXml = configuration.getContextFile();
         if (contextXml != null && contextXml.exists()) {
-            final File metaInfDirectory = new File(mojo.getCatalinaBase(), "/webapps/"
-                    + mojo.getContextPath() + "/META-INF");
+            final File metaInfDirectory = new File(configuration.getCatalinaBase(), "/webapps/"
+                    + configuration.getContextPath() + "/META-INF");
             metaInfDirectory.mkdirs();
             try {
-                this.setupUtil.copyFile(mojo.getContextFile(), new File(metaInfDirectory, "context.xml"));
+                this.setupUtil.copyFile(configuration.getContextFile(), new File(metaInfDirectory, "context.xml"));
             } catch (IOException e) {
                 throw new TomcatSetupException("Could not copy 'context.xml'.", e);
             }

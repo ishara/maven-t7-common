@@ -20,7 +20,6 @@ import java.io.IOException;
 
 import com.googlecode.t7mp.SetupUtil;
 import com.googlecode.t7mp.TomcatSetupException;
-import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
 import com.googlecode.t7mp.util.CommonsSetupUtil;
@@ -37,14 +36,13 @@ public class OverwriteWebXmlStep implements Step {
 
     @Override
     public void execute(Context context) {
-        final AbstractT7BaseMojo mojo = context.getMojo();
-        final File overwriteWebXml = mojo.getOverwriteWebXML();
+        final File overwriteWebXml = context.getConfiguration().getOverwriteWebXML();
         if ((overwriteWebXml == null) || (!overwriteWebXml.exists())) {
             return;
         }
         try {
             setupUtil.copyFile(overwriteWebXml,
-                    new File(mojo.getCatalinaBase(), "/webapps/" + mojo.getContextPath() + "/WEB-INF/web.xml"));
+                    new File(context.getConfiguration().getCatalinaBase(), "/webapps/" + context.getConfiguration().getContextPath() + "/WEB-INF/web.xml"));
         } catch (IOException e) {
             throw new TomcatSetupException(e.getMessage(), e);
         }

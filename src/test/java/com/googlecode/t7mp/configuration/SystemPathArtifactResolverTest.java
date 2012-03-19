@@ -11,13 +11,13 @@ import org.junit.Test;
  * @author jbellmann
  *
  */
-public class FilesystemArtifactResolverTest {
+public class SystemPathArtifactResolverTest {
 
     @Test
     public void testFilesystemArtifactResolver() throws ResolutionException {
         String path = getClass().getResource("/TEST.txt").getPath();
         //
-        FilesystemArtifactResolver resolver = new FilesystemArtifactResolver();
+        SystemPathArtifactResolver resolver = new SystemPathArtifactResolver();
         File testFile = resolver.resolveArtifact(path);
         Assert.assertNotNull(testFile);
         Assert.assertTrue(testFile.exists());

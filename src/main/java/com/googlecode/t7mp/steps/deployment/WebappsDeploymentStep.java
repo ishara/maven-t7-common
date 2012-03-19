@@ -35,7 +35,7 @@ public class WebappsDeploymentStep extends AbstractDeploymentStep {
     @Override
     protected List<AbstractArtifact> getArtifactList() {
         List<AbstractArtifact> artifactList = Lists.newArrayList();
-        artifactList.addAll(context.getMojo().getWebapps());
+        artifactList.addAll(context.getConfiguration().getWebapps());
         return artifactList;
     }
 
@@ -61,7 +61,7 @@ public class WebappsDeploymentStep extends AbstractDeploymentStep {
                 try {
                     String targetFileName = createTargetFileName(artifact);
                     File sourceFile = artifact.getFile();
-                    File targetFile = new File(this.context.getMojo().getCatalinaBase(), "/webapps/" + targetFileName);
+                    File targetFile = new File(this.context.getConfiguration().getCatalinaBase(), "/webapps/" + targetFileName);
                     this.context.getLog().debug(
                             "Copy artifact from " + sourceFile.getAbsolutePath() + " to "
                                     + targetFile.getAbsolutePath());

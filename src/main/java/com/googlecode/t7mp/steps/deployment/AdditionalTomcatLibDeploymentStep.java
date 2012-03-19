@@ -24,7 +24,8 @@ public class AdditionalTomcatLibDeploymentStep extends AbstractDeploymentStep {
 
     protected List<AbstractArtifact> getArtifactList() {
         List<AbstractArtifact> artifactList = Lists.newArrayList();
-        artifactList.addAll(context.getMojo().getLibs());
+//        artifactList.addAll(context.getMojo().getLibs());
+        artifactList.addAll(context.getConfiguration().getLibs());
         return artifactList;
     }
 

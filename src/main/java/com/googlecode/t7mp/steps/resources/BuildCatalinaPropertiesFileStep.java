@@ -26,8 +26,8 @@ import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.runtime.log.LogChute;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
+import com.googlecode.t7mp.BaseConfiguration;
 import com.googlecode.t7mp.TomcatSetupException;
-import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
 
@@ -35,7 +35,7 @@ public class BuildCatalinaPropertiesFileStep implements Step {
 
     @Override
     public void execute(Context context) {
-        final AbstractT7BaseMojo t7Mojo = context.getMojo();
+        final BaseConfiguration configuration = context.getConfiguration();
         try {
             Velocity.setProperty(Velocity.RUNTIME_LOG_LOGSYSTEM, new LogNothingLogChute());
             Velocity.setProperty(Velocity.RESOURCE_LOADER, "class");
@@ -44,10 +44,10 @@ public class BuildCatalinaPropertiesFileStep implements Step {
             Velocity.init();
             Template template = Velocity.getTemplate("com/googlecode/t7mp/conf/catalina.properties");
             VelocityContext velocityContext = new VelocityContext();
-            velocityContext.put("tomcatHttpPort", t7Mojo.getTomcatHttpPort() + "");
-            velocityContext.put("tomcatShutdownPort", t7Mojo.getTomcatShutdownPort() + "");
-            velocityContext.put("tomcatShutdownCommand", t7Mojo.getTomcatShutdownCommand());
-            Writer writer = new FileWriter(new File(t7Mojo.getCatalinaBase(), "/conf/catalina.properties"));
+            velocityContext.put("tomcatHttpPort", configuration.getTomcatHttpPort() + "");
+            velocityContext.put("tomcatShutdownPort", configuration.getTomcatShutdownPort() + "");
+            velocityContext.put("tomcatShutdownCommand", configuration.getTomcatShutdownCommand());
+            Writer writer = new FileWriter(new File(configuration.getCatalinaBase(), "/conf/catalina.properties"));
             template.merge(velocityContext, writer);
             writer.flush();
             writer.close();

@@ -25,13 +25,13 @@ public class SetSystemPropertiesStep implements Step {
 
     @Override
     public void execute(Context context) {
-        final String catalinaBasPath = context.getMojo().getCatalinaBase().getAbsolutePath();
+        final String catalinaBasPath = context.getConfiguration().getCatalinaBase().getAbsolutePath();
         final PluginLog log = context.getLog();
         System.setProperty("catalina.home", catalinaBasPath);
         log.debug("set systemproperty key: catalina.home to value " + catalinaBasPath);
         System.setProperty("catalina.base", catalinaBasPath);
         log.debug("set systemproperty key: catalina.base to value " + catalinaBasPath);
-        Map<String, String> properties = context.getMojo().getSystemProperties();
+        Map<String, String> properties = context.getConfiguration().getSystemProperties();
         for (String key : properties.keySet()) {
             String value = replaceCatalinas(properties.get(key));
             System.setProperty(key, value);

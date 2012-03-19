@@ -37,7 +37,7 @@ public class CreateTomcatDirectoryStep implements Step {
     @Override
     public void execute(Context context) {
         final PluginLog log = context.getLog();
-        final File createdDirectory = new File(context.getMojo().getCatalinaBase(), directory);
+        final File createdDirectory = new File(context.getConfiguration().getCatalinaBase(), directory);
         boolean created = createdDirectory.mkdirs();
         if (created) {
             log.debug("directory " + createdDirectory.getAbsolutePath() + " created");

@@ -26,8 +26,6 @@ import com.googlecode.t7mp.util.ZipUtil;
  */
 public class ResolveConfigurationArtifactStep implements Step {
 
-    //    protected AbstractT7BaseMojo mojo;
-    //    protected MyArtifactResolver myArtifactResolver;
     protected PluginLog logger;
 
     protected BaseConfiguration baseConfiguration;
@@ -35,13 +33,11 @@ public class ResolveConfigurationArtifactStep implements Step {
 
     @Override
     public void execute(Context context) {
-        //        this.mojo = context.getMojo();
         this.artifactResolver = context.getArtifactResolver();
         this.baseConfiguration = context.getConfiguration();
         this.logger = context.getLog();
-        //        this.myArtifactResolver = new MyArtifactResolver(mojo);
         // skip this step if no configuationArtifact is found
-        if (context.getMojo().getConfigArtifact() == null) {
+        if (baseConfiguration.getConfigArtifact() == null) {
             this.logger.info("No configurationArtifact found, skip this step.");
             return;
         }
@@ -49,11 +45,9 @@ public class ResolveConfigurationArtifactStep implements Step {
         this.logger.debug("resolve configurationArtifact ...");
         File unpackDirectory = null;
         try {
-            //          Artifact artifact = resolveTomcatArtifact(version);
             File resolvedArtifact = artifactResolver.resolveArtifact(this.baseConfiguration.getConfigArtifact()
                     .getArtifactCoordinates());
             unpackDirectory = getUnpackDirectory();
-            //            ZipUtil.unzip(artifact.getFile(), unpackDirectory);
             ZipUtil.unzip(resolvedArtifact, unpackDirectory);
             this.logger.debug("unzipped to " + unpackDirectory.getAbsolutePath());
             copyToTomcatConfDirectory(unpackDirectory);
@@ -85,13 +79,6 @@ public class ResolveConfigurationArtifactStep implements Step {
             FileUtils.copyFileToDirectory(file, confDirectory);
         }
     }
-
-    //    private Artifact resolveConfigurationArtifact() throws MojoExecutionException {
-    //        ConfigurationArtifact configured = this.mojo.getConfigArtifact();
-    //        Artifact artifact = myArtifactResolver.resolve(configured.getGroupId(), configured.getArtifactId(),
-    //                configured.getVersion(), null, configured.getType(), Artifact.SCOPE_COMPILE);
-    //        return artifact;
-    //    }
 
     protected File getUnpackDirectory() {
         File tempDir = new File(System.getProperty("java.io.tmpdir"));

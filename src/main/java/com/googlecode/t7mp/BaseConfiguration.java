@@ -19,9 +19,9 @@ public class BaseConfiguration {
 
     public static final int DEFAULT_TOMCAT_SHUTDOWN_PORT = 8005;
 
-    public static final String DEFAULT_TOMCAT_VERSION = "7.0.22";
-
-    public static final String CONTEXT_PATH_ROOT = "ROOT";
+    public static final String DEFAULT_CONTEXT_PATH_ROOT = "ROOT";
+    
+    protected TomcatArtifact tomcatArtifact = new TomcatArtifact();
 
     /**
      * 
@@ -47,7 +47,7 @@ public class BaseConfiguration {
      * 
      * @parameter expression="${t7.tomcatVersion}" default-value="7.0.22"
      */
-    protected String tomcatVersion = DEFAULT_TOMCAT_VERSION;
+    protected String tomcatVersion = TomcatArtifact.DEFAULT_TOMCAT_VERSION;
 
     /**
      * 
@@ -110,13 +110,13 @@ public class BaseConfiguration {
      * @optional
      *
      */
-    protected String contextPath;
+    protected String contextPath = DEFAULT_CONTEXT_PATH_ROOT;
 
     /**
      * @parameter default-value="${project.build.finalName}"
      * @readonly
      */
-    protected String buildFinalName;
+    protected String buildFinalName = DEFAULT_CONTEXT_PATH_ROOT;
 
     /**
      * @parameter default-value="${basedir}/src/main/webapp"
@@ -400,5 +400,13 @@ public class BaseConfiguration {
 
     public void setDownloadTomcatExamples(boolean downloadTomcatExamples) {
         this.downloadTomcatExamples = downloadTomcatExamples;
+    }
+    
+    public TomcatArtifact getTomcatArtifact(){
+    	return this.tomcatArtifact;
+    }
+    
+    public void setTomcatArtifact(TomcatArtifact tomcatArtifact){
+    	this.tomcatArtifact = tomcatArtifact;
     }
 }

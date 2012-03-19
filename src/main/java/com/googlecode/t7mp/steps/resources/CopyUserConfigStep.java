@@ -52,8 +52,8 @@ public class CopyUserConfigStep implements Step {
     @Override
     public void execute(Context context) {
         // setup fields
-        this.catalinaBaseDir = context.getMojo().getCatalinaBase();
-        this.userConfigDir = context.getMojo().getTomcatConfigDirectory();
+        this.catalinaBaseDir = context.getConfiguration().getCatalinaBase();
+        this.userConfigDir = context.getConfiguration().getTomcatConfigDirectory();
         this.log = context.getLog();
 
         //

@@ -2,14 +2,14 @@ package com.googlecode.t7mp.configuration;
 
 import java.io.File;
 
-import com.googlecode.t7mp.Assert;
+import org.apache.commons.lang.Validate;
 
 /**
  * 
  * @author jbellmann
  *
  */
-public final class DefaultInstallationTarget implements InstallationTarget {
+public final class DefaultInstallationTarget implements TomcatDirectoryLayout {
 
     private static final String BIN_DIR = "bin";
     private static final String CONF_DIR = "conf";
@@ -22,9 +22,9 @@ public final class DefaultInstallationTarget implements InstallationTarget {
     private final File installationTargetDirectory;
 
     public DefaultInstallationTarget(File installationTargetDirectory) {
-        Assert.notNull(installationTargetDirectory);
+        Validate.notNull(installationTargetDirectory);
         if (installationTargetDirectory.exists()) {
-            Assert.isTrue(installationTargetDirectory.isDirectory(), "File-Argument should be a directory");
+            Validate.isTrue(installationTargetDirectory.isDirectory(), "InstallationTargetDirectory-parameter should be a directory");
         } else {
             boolean created = installationTargetDirectory.mkdirs();
             if (!created) {

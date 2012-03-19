@@ -57,23 +57,18 @@ public abstract class AbstractArtifact {
      * @parameter
      */
     protected String classifier;
-
-    //    protected Artifact artifact;
+    
+    /**
+     * 
+     * @parameter
+     */
+    protected String systemPath;
 
     protected File file;
 
     AbstractArtifact() {
         // default constructor
     }
-
-    //    AbstractArtifact(Artifact artifact) {
-    //        this.setArtifact(artifact);
-    //        this.setGroupId(artifact.getGroupId());
-    //        this.setArtifactId(artifact.getArtifactId());
-    //        this.setVersion(artifact.getVersion());
-    //        this.setClassifier(artifact.getClassifier());
-    //        this.setType(artifact.getType());
-    //    }
 
     protected AbstractArtifact(String groupId, String artifactId, String version, String classifier, String type) {
         this.setGroupId(groupId);
@@ -122,15 +117,15 @@ public abstract class AbstractArtifact {
         this.classifier = classifier;
     }
 
-    //    public Artifact getArtifact() {
-    //        return artifact;
-    //    }
-    //
-    //    public void setArtifact(Artifact artifact) {
-    //        this.artifact = artifact;
-    //    }
+    public String getSystemPath() {
+		return this.systemPath;
+	}
 
-    public File getFile() {
+	public void setSystemPath(String systemPath) {
+		this.systemPath = systemPath;
+	}
+
+	public File getFile() {
         return file;
     }
 
@@ -138,11 +133,19 @@ public abstract class AbstractArtifact {
         this.file = file;
     }
 
+    public String getArtifactCoordinates() {
+    	if(!StringUtils.isBlank(getSystemPath())){
+    		return getSystemPath();
+    	}else{
+    		return buildDefaultMavenCoordinates();
+    	}
+    }
+    
     /**
      * The {@code <groupId>:<artifactId>[:<extension>[:<classifier>]]:<version>} of the artifact.
      * 
      */
-    public String getArtifactCoordinates() {
+    protected String buildDefaultMavenCoordinates(){
         StringBuilder sb = new StringBuilder();
         sb.append(getGroupId()).append(":");
         sb.append(getArtifactId());
@@ -153,7 +156,7 @@ public abstract class AbstractArtifact {
             sb.append(":").append(getClassifier());
         }
         sb.append(":");
-        sb.append(getVersion()).append(":");
+        sb.append(getVersion());
         return sb.toString().trim();
     }
 

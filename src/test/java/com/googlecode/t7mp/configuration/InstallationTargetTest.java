@@ -18,7 +18,7 @@ public class InstallationTargetTest {
 
     @Test
     public void testDefaultInstallationTarget() {
-        InstallationTarget target = new DefaultInstallationTarget(temporyFolder.newFolder("tomcat"));
+        TomcatDirectoryLayout target = new DefaultInstallationTarget(temporyFolder.newFolder("tomcat"));
         assertDirectory(target.getBinDirectory());
         assertDirectory(target.getConfDirectory());
         assertDirectory(target.getLibDirectory());

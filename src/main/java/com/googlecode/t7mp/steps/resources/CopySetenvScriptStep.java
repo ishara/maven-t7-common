@@ -22,7 +22,6 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 
 import com.googlecode.t7mp.TomcatSetupException;
-import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
 import com.googlecode.t7mp.util.TomcatUtil;
@@ -38,8 +37,7 @@ public class CopySetenvScriptStep implements Step {
 
     @Override
     public void execute(Context context) {
-        AbstractT7BaseMojo mojo = context.getMojo();
-        File tomcatConfigDirectory = mojo.getTomcatConfigDirectory();
+        File tomcatConfigDirectory = context.getConfiguration().getTomcatConfigDirectory();
         if (tomcatConfigDirectory == null || !tomcatConfigDirectory.exists()) {
             return;
         }
@@ -56,7 +54,7 @@ public class CopySetenvScriptStep implements Step {
         if (setEnvFiles != null) {
             for (File scriptFile : setEnvFiles) {
                 try {
-                    FileUtils.copyFile(scriptFile, new File(TomcatUtil.getBinDirectory(mojo.getCatalinaBase()),
+                    FileUtils.copyFile(scriptFile, new File(TomcatUtil.getBinDirectory(context.getConfiguration().getCatalinaBase()),
                             scriptFile.getName()));
                 } catch (IOException e) {
                     throw new TomcatSetupException(e.getMessage(), e);

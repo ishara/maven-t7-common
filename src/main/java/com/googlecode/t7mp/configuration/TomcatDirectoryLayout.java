@@ -7,7 +7,7 @@ import java.io.File;
  * @author jbellmann
  *
  */
-public interface InstallationTarget {
+public interface TomcatDirectoryLayout {
 
     File getBinDirectory();
 
