@@ -15,6 +15,7 @@
  */
 package com.googlecode.t7mp.maven;
 
+import java.io.File;
 import java.util.List;
 
 import org.apache.maven.artifact.Artifact;
@@ -26,26 +27,29 @@ import org.apache.maven.artifact.resolver.ArtifactResolver;
 import org.apache.maven.artifact.versioning.VersionRange;
 import org.apache.maven.plugin.MojoExecutionException;
 
+import com.googlecode.t7mp.configuration.PluginArtifactResolver;
+import com.googlecode.t7mp.configuration.ResolutionException;
 
 /**
  * Uses Maven-API to resolve the Artifacts.
  * 
  *
  */
-public class MyArtifactResolver {
+public class MyArtifactResolver implements PluginArtifactResolver {
 
-    private ArtifactResolver resolver;
-    private ArtifactFactory factory;
-    private ArtifactRepository local;
-    private List<ArtifactRepository> remoteRepositories;
-//    private boolean resolveAllways = false;
+    private final ArtifactResolver resolver;
+    private final ArtifactFactory factory;
+    private final ArtifactRepository local;
+    private final List<ArtifactRepository> remoteRepositories;
+
+    //    private boolean resolveAllways = false;
 
     public MyArtifactResolver(AbstractT7BaseMojo t7BaseMojo) {
         this.remoteRepositories = t7BaseMojo.getRemoteRepos();
         this.local = t7BaseMojo.getLocal();
         this.resolver = t7BaseMojo.getResolver();
         this.factory = t7BaseMojo.getFactory();
-//        this.resolveAllways = t7Mojo.isResolverUpdateSnapshotsAllways();
+        //        this.resolveAllways = t7Mojo.isResolverUpdateSnapshotsAllways();
     }
 
     /**
@@ -60,8 +64,8 @@ public class MyArtifactResolver {
      * @return
      * @throws MojoExecutionException
      */
-    public Artifact resolve(String groupId, String artifactId, String version, String classifier, String type, String scope)
-            throws MojoExecutionException {
+    public Artifact resolve(String groupId, String artifactId, String version, String classifier, String type,
+            String scope) throws MojoExecutionException {
         Artifact artifact = factory.createDependencyArtifact(groupId, artifactId,
                 VersionRange.createFromVersion(version), type, classifier, Artifact.SCOPE_COMPILE);
         try {
@@ -74,11 +78,19 @@ public class MyArtifactResolver {
         return artifact;
     }
 
-    public Artifact resolveJar(String groupId, String artifactId, String version, String classifier) throws MojoExecutionException {
+    public Artifact resolveJar(String groupId, String artifactId, String version, String classifier)
+            throws MojoExecutionException {
         return resolve(groupId, artifactId, version, classifier, "jar", Artifact.SCOPE_COMPILE);
     }
 
-    public Artifact resolveWar(String groupId, String artifactId, String version, String classifier) throws MojoExecutionException {
+    public Artifact resolveWar(String groupId, String artifactId, String version, String classifier)
+            throws MojoExecutionException {
         return resolve(groupId, artifactId, version, classifier, "war", Artifact.SCOPE_COMPILE);
+    }
+
+    @Override
+    public File resolveArtifact(String coordinates) throws ResolutionException {
+
+        return null;
     }
 }

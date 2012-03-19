@@ -7,7 +7,7 @@
     </parent>
     <groupId>com.googlecode.t7mp</groupId>
     <artifactId>maven-t7-common</artifactId>
-    <version>0.9.10-SNAPSHOT</version>
+    <version>0.9.10-dev-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>maven-t7-common</name>
     <description>T7MP common</description>
@@ -264,11 +264,13 @@
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-model</artifactId>
             <version>${maven.version}</version>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-core</artifactId>
             <version>${maven.version}</version>
+            <optional>true</optional>
             <exclusions>
               <exclusion>
                 <artifactId>slf4j-jdk14</artifactId>
@@ -283,26 +285,31 @@
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-plugin-api</artifactId>
+            <optional>true</optional>
             <version>${maven.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-project</artifactId>
+            <optional>true</optional>
             <version>${maven.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-artifact</artifactId>
+            <optional>true</optional>
             <version>${maven.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-artifact-manager</artifactId>
+            <optional>true</optional>
             <version>${maven.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-archiver</artifactId>
+            <optional>true</optional>
             <version>2.4.1</version>
         </dependency>
 
