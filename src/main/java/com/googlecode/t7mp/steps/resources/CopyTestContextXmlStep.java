@@ -28,7 +28,7 @@ import com.googlecode.t7mp.util.CommonsSetupUtil;
 /**
  * Copies configured 'context.xml' to 'META-INF' directory.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class CopyTestContextXmlStep implements Step {

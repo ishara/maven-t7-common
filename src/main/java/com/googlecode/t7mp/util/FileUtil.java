@@ -24,7 +24,7 @@ import com.google.common.collect.Sets;
 /**
  * Little Helper.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public final class FileUtil {

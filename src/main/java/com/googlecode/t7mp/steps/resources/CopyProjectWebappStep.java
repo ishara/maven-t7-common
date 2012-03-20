@@ -28,7 +28,7 @@ import com.googlecode.t7mp.util.CommonsSetupUtil;
 /**
  * Copies the final 'webapp' to tomcats 'webapps' directory.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class CopyProjectWebappStep implements Step {

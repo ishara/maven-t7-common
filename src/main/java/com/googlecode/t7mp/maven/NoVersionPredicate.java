@@ -21,7 +21,7 @@ import com.googlecode.t7mp.PluginLog;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 class NoVersionPredicate implements Predicate<AbstractArtifact> {

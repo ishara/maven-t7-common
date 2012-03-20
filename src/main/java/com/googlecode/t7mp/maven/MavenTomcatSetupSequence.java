@@ -6,7 +6,7 @@ import com.googlecode.t7mp.steps.deployment.TomcatSetupSequence;
 /**
  * TomcatSetupSequence in a Maven-Environment.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class MavenTomcatSetupSequence extends DefaultStepSequence {

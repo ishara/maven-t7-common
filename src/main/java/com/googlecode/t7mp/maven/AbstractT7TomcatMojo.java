@@ -4,7 +4,7 @@ package com.googlecode.t7mp.maven;
  * 
  * Takes configurations for t7 Tomcat only (no TomEE).
  *
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public abstract class AbstractT7TomcatMojo extends AbstractT7BaseMojo {

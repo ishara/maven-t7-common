@@ -4,7 +4,7 @@ import java.io.File;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public interface LocalFileDependency extends Dependency {

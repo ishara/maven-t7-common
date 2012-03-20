@@ -6,7 +6,7 @@ import java.io.FileFilter;
 /**
  * Static methods to create configured {@link FileFilter} objects.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public final class FileFilters {

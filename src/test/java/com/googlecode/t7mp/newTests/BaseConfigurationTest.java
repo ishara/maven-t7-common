@@ -13,7 +13,7 @@ import com.googlecode.t7mp.BaseConfiguration;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class BaseConfigurationTest {

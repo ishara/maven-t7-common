@@ -25,7 +25,7 @@ import com.googlecode.t7mp.steps.resources.WebappSequence;
  * Combines all steps needed for setting up a forked-tomcat with all configured
  * elements.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class ForkedSetupSequence extends DefaultStepSequence {

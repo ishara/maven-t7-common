@@ -58,7 +58,7 @@ public class BuildCatalinaPropertiesFileStep implements Step {
     
     /**
      * 
-     * @author jbellmann
+     * @author Joerg Bellmann
      *
      */
     static class LogNothingLogChute implements LogChute {

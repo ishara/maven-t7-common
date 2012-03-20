@@ -14,7 +14,7 @@ import org.junit.Test;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class ZipUtilTest {

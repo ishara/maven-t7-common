@@ -18,7 +18,7 @@ package com.googlecode.t7mp;
 /**
  * The Plugin-Log-Interface. Only for T7-Plugin-Logging.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public interface PluginLog {

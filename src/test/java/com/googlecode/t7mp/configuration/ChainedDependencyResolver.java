@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class ChainedDependencyResolver implements DependencyResolver {

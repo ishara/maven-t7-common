@@ -20,7 +20,7 @@ import com.googlecode.t7mp.steps.resources.CreateTomcatDirectoryStep;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class CreateTomcatDirectoriesSequence extends DefaultStepSequence {

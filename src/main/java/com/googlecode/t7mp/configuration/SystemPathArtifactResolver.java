@@ -7,7 +7,7 @@ import org.apache.commons.lang.Validate;
 /**
  * FilesystemArtifactResolver can be used in tests to simulate Maven-Artifact resolution.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public final class SystemPathArtifactResolver implements PluginArtifactResolver {

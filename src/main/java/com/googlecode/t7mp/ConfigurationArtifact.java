@@ -3,7 +3,7 @@ package com.googlecode.t7mp;
 /**
  * An ConfigurationArtifact.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class ConfigurationArtifact extends JarArtifact {

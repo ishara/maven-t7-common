@@ -38,7 +38,7 @@ import com.googlecode.t7mp.util.FilesOnlyFileFilter;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class CopyUserConfigStep implements Step {

@@ -19,7 +19,7 @@ import org.junit.Test;
 
 public class LastIndexOfTest {
 
-    private final static String absolutePath = "home/jbellmann/DEV/ECLIPSE_INST/sts_2.5_RELEASE/workspace/flow-test/src/main/webapp/index.jsp";
+    private final static String absolutePath = "home/Joerg Bellmann/DEV/ECLIPSE_INST/sts_2.5_RELEASE/workspace/flow-test/src/main/webapp/index.jsp";
 
     @Test
     public void testLastIndexOf() {

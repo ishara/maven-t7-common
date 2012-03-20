@@ -21,7 +21,7 @@ import com.googlecode.t7mp.util.ZipUtil;
 /**
  * Resolve the configurationArtifact and copy Files to conf-directory.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class ResolveConfigurationArtifactStep implements Step {

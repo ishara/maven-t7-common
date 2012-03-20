@@ -21,7 +21,7 @@ import java.io.PrintStream;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  * 
  */
 public final class CatalinaOutPrintStream extends PrintStream {

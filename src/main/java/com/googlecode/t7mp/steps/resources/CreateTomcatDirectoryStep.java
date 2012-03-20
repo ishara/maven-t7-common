@@ -23,7 +23,7 @@ import com.googlecode.t7mp.steps.Step;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class CreateTomcatDirectoryStep implements Step {

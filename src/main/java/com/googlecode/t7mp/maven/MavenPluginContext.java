@@ -6,7 +6,7 @@ import com.googlecode.t7mp.steps.Context;
  * {@link Context}implementation that will be used when running in
  * a Maven-Plugin.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public interface MavenPluginContext extends Context {

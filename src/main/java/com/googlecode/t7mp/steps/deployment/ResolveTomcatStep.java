@@ -36,7 +36,7 @@ import com.googlecode.t7mp.util.ZipUtil;
 /**
  * TODO Comment.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class ResolveTomcatStep implements Step {

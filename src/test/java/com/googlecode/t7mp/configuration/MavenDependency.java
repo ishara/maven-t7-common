@@ -2,7 +2,7 @@ package com.googlecode.t7mp.configuration;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public interface MavenDependency extends Dependency {

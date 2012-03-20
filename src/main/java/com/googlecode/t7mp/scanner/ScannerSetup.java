@@ -24,7 +24,7 @@ import com.googlecode.t7mp.ShutdownHook;
 /**
  * Takes configuration, creates scanners and add them to the shutdownhook.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public final class ScannerSetup {

@@ -2,7 +2,7 @@ package com.googlecode.t7mp;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public interface LogSupport {

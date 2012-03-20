@@ -17,7 +17,7 @@ package com.googlecode.t7mp.util;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public final class SystemUtil {

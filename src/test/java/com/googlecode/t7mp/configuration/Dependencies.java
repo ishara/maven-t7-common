@@ -10,7 +10,7 @@ import com.google.common.collect.Iterables;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public final class Dependencies {

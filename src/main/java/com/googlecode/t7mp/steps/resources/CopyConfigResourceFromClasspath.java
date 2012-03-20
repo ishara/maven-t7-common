@@ -28,7 +28,7 @@ import com.googlecode.t7mp.util.CommonsSetupUtil;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class CopyConfigResourceFromClasspath implements Step {

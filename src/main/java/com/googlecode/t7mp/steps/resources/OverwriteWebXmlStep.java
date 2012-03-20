@@ -27,7 +27,7 @@ import com.googlecode.t7mp.util.CommonsSetupUtil;
 /**
  * Replaces the 'web.xml' with the configured 'web.xml' maybe with special values for tests.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class OverwriteWebXmlStep implements Step {

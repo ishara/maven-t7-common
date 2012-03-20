@@ -15,12 +15,12 @@ import com.googlecode.t7mp.steps.deployment.TomcatSetupSequence;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class TomcatSetupSequenceTest {
     
-    private final String systemPathToAnTomcatZip = "/home/jbellmann/Downloads/apache-tomcat-7.0.26.zip";
+    private final String systemPathToAnTomcatZip = "/home/Joerg Bellmann/Downloads/apache-tomcat-7.0.26.zip";
 
     @Rule
     public static TemporaryFolder tempFolders = new TemporaryFolder();

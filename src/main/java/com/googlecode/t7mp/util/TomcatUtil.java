@@ -19,7 +19,7 @@ import java.io.File;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public final class TomcatUtil {

@@ -8,7 +8,7 @@ import org.junit.Test;
 /**
  * FilesystemArtifactResolverTest.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class SystemPathArtifactResolverTest {

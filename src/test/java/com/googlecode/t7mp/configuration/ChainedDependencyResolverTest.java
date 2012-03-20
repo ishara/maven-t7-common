@@ -7,7 +7,7 @@ import org.junit.Test;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class ChainedDependencyResolverTest {
@@ -34,7 +34,7 @@ public class ChainedDependencyResolverTest {
         resolver.addDependencyResolver(new RemoteFileDependencyResolver());
         Assert.assertFalse(resolver.isDependencySupported(LocalFileDependency.class));
         Assert.assertTrue(resolver.isDependencySupported(RemoteFileDependency.class));
-        File result = resolver.getFile(Dependencies.create("https://jbellmann.de/index.html"));
+        File result = resolver.getFile(Dependencies.create("https://Joerg Bellmann.de/index.html"));
         Assert.assertNotNull(result);
         Assert.assertTrue(result.getAbsolutePath().endsWith(".html"));
     }
@@ -44,7 +44,7 @@ public class ChainedDependencyResolverTest {
         DependencyResolver resolver = ChainedDependencyResolver.create();
         Assert.assertTrue(resolver.isDependencySupported(LocalFileDependency.class));
         Assert.assertTrue(resolver.isDependencySupported(RemoteFileDependency.class));
-        File result = resolver.getFile(Dependencies.create("https://jbellmann.de/index.html"));
+        File result = resolver.getFile(Dependencies.create("https://Joerg Bellmann.de/index.html"));
         Assert.assertNotNull(result);
         Assert.assertTrue(result.getAbsolutePath().endsWith(".html"));
 

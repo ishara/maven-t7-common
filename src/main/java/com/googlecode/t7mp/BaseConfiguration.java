@@ -10,7 +10,7 @@ import com.googlecode.t7mp.scanner.ScannerConfiguration;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class BaseConfiguration {

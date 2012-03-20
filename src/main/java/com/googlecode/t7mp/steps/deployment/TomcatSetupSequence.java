@@ -25,7 +25,7 @@ import com.googlecode.t7mp.steps.resources.WebappSequence;
  * Combines all steps needed to setting up an tomcat with all configured
  * elements.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class TomcatSetupSequence extends DefaultStepSequence {

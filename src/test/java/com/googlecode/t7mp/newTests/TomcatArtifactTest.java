@@ -8,7 +8,7 @@ import com.googlecode.t7mp.TomcatArtifact;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class TomcatArtifactTest {
@@ -39,8 +39,8 @@ public class TomcatArtifactTest {
 	@Test
 	public void testCoordinatesWithSystemPath(){
 		TomcatArtifact tomcat = new TomcatArtifact();
-		tomcat.setSystemPath("/home/jbellmann/test/tomcat.zip");
-		Assert.assertEquals("/home/jbellmann/test/tomcat.zip", tomcat.getArtifactCoordinates());
+		tomcat.setSystemPath("/home/Joerg Bellmann/test/tomcat.zip");
+		Assert.assertEquals("/home/Joerg Bellmann/test/tomcat.zip", tomcat.getArtifactCoordinates());
 	}
 	
 }

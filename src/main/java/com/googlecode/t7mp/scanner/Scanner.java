@@ -22,7 +22,7 @@ import com.googlecode.t7mp.PluginLog;
 /**
  * Scanner that creates a Timer with a TimerTask.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public final class Scanner {

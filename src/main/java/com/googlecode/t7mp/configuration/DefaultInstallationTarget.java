@@ -6,7 +6,7 @@ import org.apache.commons.lang.Validate;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public final class DefaultInstallationTarget implements TomcatDirectoryLayout {

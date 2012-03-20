@@ -17,7 +17,7 @@ package com.googlecode.t7mp;
 
 /**
  * TODO Comment.
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class DefaultPluginLog implements PluginLog {

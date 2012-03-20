@@ -22,7 +22,7 @@ import java.io.OutputStream;
 
 /**
  * TODO Comment.
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public interface SetupUtil {

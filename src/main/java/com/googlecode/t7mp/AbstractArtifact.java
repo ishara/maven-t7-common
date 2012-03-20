@@ -21,7 +21,7 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  * TODO Comment.
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public abstract class AbstractArtifact {

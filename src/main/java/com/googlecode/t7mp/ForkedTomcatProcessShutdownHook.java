@@ -22,7 +22,7 @@ import com.googlecode.t7mp.scanner.Scanner;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class ForkedTomcatProcessShutdownHook extends Thread implements ShutdownHook {

@@ -26,7 +26,7 @@ import com.googlecode.t7mp.util.CatalinaOutPrintStream;
 /**
  * TODO Comment.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  * 
  */
 public final class TomcatShutdownHook extends Thread implements ShutdownHook {

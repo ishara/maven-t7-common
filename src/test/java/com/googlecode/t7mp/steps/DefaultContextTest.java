@@ -24,7 +24,7 @@ import com.googlecode.t7mp.configuration.PluginArtifactResolver;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class DefaultContextTest {

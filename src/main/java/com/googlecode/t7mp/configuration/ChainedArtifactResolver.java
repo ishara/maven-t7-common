@@ -8,7 +8,7 @@ import org.apache.commons.lang.Validate;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class ChainedArtifactResolver implements PluginArtifactResolver {

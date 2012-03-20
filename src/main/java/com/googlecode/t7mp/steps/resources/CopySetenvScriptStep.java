@@ -28,7 +28,7 @@ import com.googlecode.t7mp.util.TomcatUtil;
 
 /**
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class CopySetenvScriptStep implements Step {

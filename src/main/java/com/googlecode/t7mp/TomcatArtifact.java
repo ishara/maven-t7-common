@@ -3,7 +3,7 @@ package com.googlecode.t7mp;
 /**
  * Use this artifact to resolve the tomcat distribution from Maven-Central.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public class TomcatArtifact extends AbstractArtifact {
