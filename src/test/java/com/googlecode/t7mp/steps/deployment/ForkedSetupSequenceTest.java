@@ -22,7 +22,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
+import com.googlecode.t7mp.BaseConfiguration;
+import com.googlecode.t7mp.configuration.ChainedArtifactResolver;
 import com.googlecode.t7mp.maven.CheckT7ArtifactsStep;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.DefaultContext;
@@ -50,10 +51,10 @@ public class ForkedSetupSequenceTest {
         Step seven = sequence.getSteps().get(5);
         Assert.assertTrue(seven instanceof WebappSequence);
 
-        AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
-        Mockito.when(mojo.isAddGithubRepository()).thenReturn(false);
+//        AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
+//        Mockito.when(mojo.isAddGithubRepository()).thenReturn(false);
 
-        sequence.execute(new DefaultContext(mojo));
+        sequence.execute(new DefaultContext(new ChainedArtifactResolver(), Mockito.mock(BaseConfiguration.class)));
 
     }
 

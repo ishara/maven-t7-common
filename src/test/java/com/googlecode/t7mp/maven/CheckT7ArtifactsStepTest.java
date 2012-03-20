@@ -28,17 +28,15 @@ import org.mockito.Mockito;
 import com.google.common.collect.Lists;
 import com.googlecode.t7mp.AbstractArtifact;
 import com.googlecode.t7mp.JarArtifact;
-import com.googlecode.t7mp.maven.CheckT7ArtifactsStep;
 import com.googlecode.t7mp.steps.Context;
-import com.googlecode.t7mp.steps.DefaultContext;
 import com.googlecode.t7mp.steps.Step;
 
 public class CheckT7ArtifactsStepTest {
 
-    private AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
-    private Log log = Mockito.mock(Log.class);
-    private MavenProject mavenProject = Mockito.mock(MavenProject.class);
-    private DependencyManagement dependencyManagement = Mockito.mock(DependencyManagement.class);
+    private final AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
+    private final Log log = Mockito.mock(Log.class);
+    private final MavenProject mavenProject = Mockito.mock(MavenProject.class);
+    private final DependencyManagement dependencyManagement = Mockito.mock(DependencyManagement.class);
 
     private Context context;
 
@@ -52,7 +50,8 @@ public class CheckT7ArtifactsStepTest {
         Mockito.when(mavenProject.getDependencyManagement()).thenReturn(dependencyManagement);
         Mockito.when(dependencyManagement.getDependencies()).thenReturn(getManagedDependencies());
 
-        context = new DefaultContext(mojo);
+        Context parentContext = Mockito.mock(Context.class);
+        context = new DefaultMavenPluginContext(parentContext, mojo);
 
     }
 

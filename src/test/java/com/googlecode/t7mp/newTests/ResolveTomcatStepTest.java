@@ -4,7 +4,6 @@ import java.io.File;
 
 import junit.framework.Assert;
 
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -20,10 +19,10 @@ import com.googlecode.t7mp.steps.deployment.ResolveTomcatStep;
  * @author jbellmann
  *
  */
-@Ignore
+//@Ignore
 public class ResolveTomcatStepTest {
 
-	private String systemPathToAnTomcatZip = "/Users/jbellmann/Downloads/apache-tomcat-7.0.26.zip";
+	private final String systemPathToAnTomcatZip = "/home/jbellmann/Downloads/apache-tomcat-7.0.26.zip";
 
 	@Rule
 	public static TemporaryFolder tempFolders = new TemporaryFolder();

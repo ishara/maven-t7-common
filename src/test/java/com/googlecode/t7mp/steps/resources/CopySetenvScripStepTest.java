@@ -27,7 +27,8 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.google.common.io.Files;
-import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
+import com.googlecode.t7mp.BaseConfiguration;
+import com.googlecode.t7mp.configuration.ChainedArtifactResolver;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.DefaultContext;
 import com.googlecode.t7mp.steps.Step;
@@ -35,7 +36,7 @@ import com.googlecode.t7mp.steps.Step;
 public class CopySetenvScripStepTest {
 
     private File catalinaBaseDir;
-    private final AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
+    private final BaseConfiguration configuration = Mockito.mock(BaseConfiguration.class);
 
     //    private final PluginLog log = new DefaultPluginLog();
 
@@ -46,7 +47,7 @@ public class CopySetenvScripStepTest {
         Assert.assertNotNull(catalinaBaseDir);
         Assert.assertTrue(catalinaBaseDir.exists());
 
-        Mockito.when(mojo.getCatalinaBase()).thenReturn(catalinaBaseDir);
+        Mockito.when(configuration.getCatalinaBase()).thenReturn(catalinaBaseDir);
         //        Mockito.when(mojo.getLog()).thenReturn(log);
     }
 
@@ -57,7 +58,7 @@ public class CopySetenvScripStepTest {
 
     @Test
     public void testCopySetenvScriptStepNotExist() {
-        Context context = new DefaultContext(mojo);
+        Context context = new DefaultContext(new ChainedArtifactResolver(), configuration);
         Step step = new CopySetenvScriptStep();
         step.execute(context);
     }
@@ -69,8 +70,8 @@ public class CopySetenvScripStepTest {
         File confDirectory = new File(t7mpDirectory, "/conf/");
         Assert.assertNotNull(confDirectory);
         Assert.assertTrue(confDirectory.exists());
-        Mockito.when(mojo.getTomcatConfigDirectory()).thenReturn(new File(t7mpDirectory, "/conf/"));
-        Context context = new DefaultContext(mojo);
+        Mockito.when(configuration.getTomcatConfigDirectory()).thenReturn(new File(t7mpDirectory, "/conf/"));
+        Context context = new DefaultContext(new ChainedArtifactResolver(), configuration);
         Step step = new CopySetenvScriptStep();
         step.execute(context);
         File binDirectory = new File(catalinaBaseDir, "/bin/");

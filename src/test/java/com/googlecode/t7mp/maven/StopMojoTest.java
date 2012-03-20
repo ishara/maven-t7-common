@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.googlecode.t7mp;
+package com.googlecode.t7mp.maven;
 
 import org.apache.catalina.startup.Bootstrap;
 import org.junit.Ignore;

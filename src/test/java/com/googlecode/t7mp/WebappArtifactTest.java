@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.googlecode.t7mp.artifact;
+package com.googlecode.t7mp;
 
 import java.io.File;
 
@@ -21,7 +21,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.googlecode.t7mp.ArtifactConstants;
 import com.googlecode.t7mp.WebappArtifact;
 
 public class WebappArtifactTest {

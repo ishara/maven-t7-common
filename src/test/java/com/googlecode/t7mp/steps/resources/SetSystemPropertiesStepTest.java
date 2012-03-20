@@ -27,7 +27,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
+import com.googlecode.t7mp.BaseConfiguration;
+import com.googlecode.t7mp.configuration.ChainedArtifactResolver;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.DefaultContext;
 import com.googlecode.t7mp.steps.Step;
@@ -38,7 +39,7 @@ public class SetSystemPropertiesStepTest {
     private static final String PROPERTY_VALUE = "PROPERTY_VALUE_";
 
     private File catalinaBaseDir;
-    private final AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
+    private final BaseConfiguration configuration = Mockito.mock(BaseConfiguration.class);
     //    private Log log = new SysoutLog();
 
     private Map<String, String> properties;
@@ -64,10 +65,10 @@ public class SetSystemPropertiesStepTest {
 
     @Test
     public void testSetSystemProperties() {
-        Mockito.when(mojo.getCatalinaBase()).thenReturn(catalinaBaseDir);
-        Mockito.when(mojo.getSystemProperties()).thenReturn(properties);
+        Mockito.when(configuration.getCatalinaBase()).thenReturn(catalinaBaseDir);
+        Mockito.when(configuration.getSystemProperties()).thenReturn(properties);
         //	Mockito.when(mojo.getLog()).thenReturn(log);
-        Context context = new DefaultContext(mojo);
+        Context context = new DefaultContext(new ChainedArtifactResolver(), configuration);
         Step step = new SetSystemPropertiesStep();
         step.execute(context);
         // validate result
@@ -78,15 +79,15 @@ public class SetSystemPropertiesStepTest {
 
     @Test
     public void testSetSystemPropertiesWithReplacement() {
-        Mockito.when(mojo.getCatalinaBase()).thenReturn(catalinaBaseDir);
+        Mockito.when(configuration.getCatalinaBase()).thenReturn(catalinaBaseDir);
         //        Mockito.when(mojo.getLog()).thenReturn(log);
         //
         properties.put("XXX", "${catalina.home}");
         properties.put("YYY", "${catalina.base}");
 
-        Mockito.when(mojo.getSystemProperties()).thenReturn(properties);
+        Mockito.when(configuration.getSystemProperties()).thenReturn(properties);
 
-        Context context = new DefaultContext(mojo);
+        Context context = new DefaultContext(new ChainedArtifactResolver(), configuration);
         Step step = new SetSystemPropertiesStep();
         step.execute(context);
         // validate result

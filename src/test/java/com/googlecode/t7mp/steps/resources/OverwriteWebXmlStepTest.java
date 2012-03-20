@@ -21,7 +21,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
+import com.googlecode.t7mp.BaseConfiguration;
+import com.googlecode.t7mp.configuration.ChainedArtifactResolver;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.DefaultContext;
 import com.googlecode.t7mp.steps.Step;
@@ -29,20 +30,20 @@ import com.googlecode.t7mp.steps.Step;
 public class OverwriteWebXmlStepTest {
 
     private File catalinaBaseDir;
-    private final AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
+    private final BaseConfiguration configuration = Mockito.mock(BaseConfiguration.class);
 
     //    private final PluginLog log = new DefaultPluginLog();
 
     @Before
     public void setUp() {
-        Mockito.when(mojo.getCatalinaBase()).thenReturn(catalinaBaseDir);
+        Mockito.when(configuration.getCatalinaBase()).thenReturn(catalinaBaseDir);
         //        Mockito.when(mojo.getLog()).thenReturn(log);
     }
 
     @Test
     public void testOverwriteWebXmlIsNull() {
-        Mockito.when(mojo.getOverwriteWebXML()).thenReturn(null);
-        Context context = new DefaultContext(mojo);
+        Mockito.when(configuration.getOverwriteWebXML()).thenReturn(null);
+        Context context = new DefaultContext(new ChainedArtifactResolver(), configuration);
         Step step = new OverwriteWebXmlStep();
         step.execute(context);
     }
@@ -50,8 +51,8 @@ public class OverwriteWebXmlStepTest {
     @Test
     public void testOverwriteWebXmlDoesNotExist() {
         File notExistentFile = new File("/klaus/peter");
-        Mockito.when(mojo.getOverwriteWebXML()).thenReturn(notExistentFile);
-        Context context = new DefaultContext(mojo);
+        Mockito.when(configuration.getOverwriteWebXML()).thenReturn(notExistentFile);
+        Context context = new DefaultContext(new ChainedArtifactResolver(), configuration);
         Step step = new OverwriteWebXmlStep();
         step.execute(context);
     }

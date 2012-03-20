@@ -26,9 +26,9 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.google.common.io.Files;
+import com.googlecode.t7mp.BaseConfiguration;
 import com.googlecode.t7mp.DefaultPluginLog;
 import com.googlecode.t7mp.PluginLog;
-import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
 
@@ -36,15 +36,15 @@ public class CreateTomcatDirectoryStepTest {
 
     private File catalinaBaseDir;
     private final Context context = Mockito.mock(Context.class);
-    private final AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
+    private final BaseConfiguration configuration = Mockito.mock(BaseConfiguration.class);
     private final PluginLog log = new DefaultPluginLog();
 
     @Before
     public void setUp() {
         catalinaBaseDir = Files.createTempDir();
-        Mockito.when(context.getMojo()).thenReturn(mojo);
+        Mockito.when(context.getConfiguration()).thenReturn(configuration);
         Mockito.when(context.getLog()).thenReturn(log);
-        Mockito.when(mojo.getCatalinaBase()).thenReturn(catalinaBaseDir);
+        Mockito.when(configuration.getCatalinaBase()).thenReturn(catalinaBaseDir);
     }
 
     @After
