@@ -22,6 +22,7 @@ import org.apache.maven.model.DependencyManagement;
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.project.MavenProject;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -31,6 +32,7 @@ import com.googlecode.t7mp.JarArtifact;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
 
+@Ignore
 public class CheckT7ArtifactsStepTest {
 
     private final AbstractT7BaseMojo mojo = Mockito.mock(AbstractT7BaseMojo.class);
