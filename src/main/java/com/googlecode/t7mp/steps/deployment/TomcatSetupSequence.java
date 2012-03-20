@@ -15,23 +15,22 @@
  */
 package com.googlecode.t7mp.steps.deployment;
 
-import com.googlecode.t7mp.maven.CheckT7ArtifactsStep;
+import com.googlecode.t7mp.steps.DefaultStepSequence;
 import com.googlecode.t7mp.steps.resources.ConfigFilesSequence;
 import com.googlecode.t7mp.steps.resources.CopyConfigResourcesFromClasspathSequence;
 import com.googlecode.t7mp.steps.resources.SetSystemPropertiesStep;
 import com.googlecode.t7mp.steps.resources.WebappSequence;
 
 /**
- * Combines all steps needed to setting up an in-process-tomcat with all configured
+ * Combines all steps needed to setting up an tomcat with all configured
  * elements.
  * 
  * @author jbellmann
  *
  */
-public class TomcatSetupSequence extends SetupStepSequence {
+public class TomcatSetupSequence extends DefaultStepSequence {
 
     public TomcatSetupSequence() {
-        this.add(new CheckT7ArtifactsStep());
         this.add(new ResolveTomcatStep());
         this.add(new CopyConfigResourcesFromClasspathSequence());
         this.add(new ConfigFilesSequence());
