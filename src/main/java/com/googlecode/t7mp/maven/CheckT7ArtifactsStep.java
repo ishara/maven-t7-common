@@ -43,7 +43,7 @@ public class CheckT7ArtifactsStep implements Step {
     @SuppressWarnings("unchecked")
     @Override
     public void execute(Context context) {
-        mojo = context.getMojo();
+        mojo = ((MavenPluginContext)context).getMojo();
         configuration = context.getConfiguration();
         log = context.getLog();
         noVersionPredicate = new NoVersionPredicate(log);
