@@ -17,7 +17,9 @@ package com.googlecode.t7mp.steps;
 
 /**
  * 
- * @author jbellmann
+ * Defines a sequence of {@link Step}s.
+ * 
+ * @author Joerg Bellmann
  *
  */
 public interface StepSequence extends Step {

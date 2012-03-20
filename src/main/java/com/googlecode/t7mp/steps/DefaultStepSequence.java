@@ -20,7 +20,9 @@ import java.util.List;
 
 /**
  * 
- * @author jbellmann
+ * Implementation of a {@link StepSequence}.
+ * 
+ * @author Joerg Bellmann
  *
  */
 public class DefaultStepSequence implements StepSequence {

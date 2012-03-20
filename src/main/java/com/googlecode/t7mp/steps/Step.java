@@ -17,7 +17,9 @@ package com.googlecode.t7mp.steps;
 
 /**
  * 
- * @author jbellmann
+ * Defines a small simple Step/Task/Unit of Work.
+ * 
+ * @author Joerg Bellmann
  *
  */
 public interface Step {

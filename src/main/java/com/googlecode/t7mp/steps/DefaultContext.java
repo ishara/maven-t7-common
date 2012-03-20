@@ -22,36 +22,24 @@ import com.googlecode.t7mp.BaseConfiguration;
 import com.googlecode.t7mp.DefaultPluginLog;
 import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.configuration.PluginArtifactResolver;
-import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
 
 /**
  * 
- * @author jbellmann
+ * Implementation of an {@link Context}.
+ * 
+ * @author Joerg Bellmann
  *
  */
 public class DefaultContext implements Context {
-
-    @Deprecated
-    protected AbstractT7BaseMojo t7mojo;
 
     protected Map<String, Object> context = new HashMap<String, Object>();
 
     protected PluginArtifactResolver artifactResolver;
     protected BaseConfiguration baseConfiguration;
 
-    public DefaultContext(AbstractT7BaseMojo t7mojo) {
-        this.t7mojo = t7mojo;
-    }
-
     public DefaultContext(PluginArtifactResolver artifactResolver, BaseConfiguration baseConfiguration) {
         this.artifactResolver = artifactResolver;
         this.baseConfiguration = baseConfiguration;
-    }
-
-    @Deprecated
-    @Override
-    public AbstractT7BaseMojo getMojo() {
-        return this.t7mojo;
     }
 
     @Override

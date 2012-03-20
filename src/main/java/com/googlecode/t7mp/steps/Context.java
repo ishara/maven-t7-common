@@ -18,17 +18,14 @@ package com.googlecode.t7mp.steps;
 import com.googlecode.t7mp.BaseConfiguration;
 import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.configuration.PluginArtifactResolver;
-import com.googlecode.t7mp.maven.AbstractT7BaseMojo;
 
 /**
+ * Defines an execution context that will be passed between steps.
  * 
- * @author jbellmann
+ * @author Joerg Bellmann
  *
  */
 public interface Context {
-
-    @Deprecated
-    AbstractT7BaseMojo getMojo();
 
     PluginLog getLog();
 
