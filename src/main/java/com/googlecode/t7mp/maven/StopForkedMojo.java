@@ -67,9 +67,9 @@ public class StopForkedMojo extends AbstractT7TomcatMojo {
 
     protected String[] getStopSkriptCommand() {
         if (SystemUtil.isWindowsSystem()) {
-            return new String[] { "cmd", "/c", "catalina.bat", "stop" };
+            return new String[] {"cmd", "/c", "catalina.bat", "stop"};
         } else {
-            return new String[] { "./catalina.sh", "stop" };
+            return new String[] {"./catalina.sh", "stop"};
         }
     }
 

@@ -65,9 +65,9 @@ public class ResolveTomcatStep implements Step {
 
         File unpackDirectory = null;
         try {
-        	
-        	TomcatArtifact tomcatArtifact = configuration.getTomcatArtifact();
-        	tomcatArtifact.setVersion(version);
+
+            TomcatArtifact tomcatArtifact = configuration.getTomcatArtifact();
+            tomcatArtifact.setVersion(version);
             File resolvedArtifact = artifactResolver.resolveArtifact(tomcatArtifact.getArtifactCoordinates());
             unpackDirectory = getUnpackDirectory();
             ZipUtil.unzip(resolvedArtifact, unpackDirectory);

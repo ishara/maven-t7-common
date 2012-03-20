@@ -57,8 +57,7 @@ public final class StopMojo extends AbstractMojo {
      * On shutdown not all MBean will be unregistered. That causes a problem if the Tomcat must
      * start more than once in the same VM. The bootstrap.start() breaks.
      */
-    private void cleanupMBeanServer() throws MalformedObjectNameException, MBeanRegistrationException,
-            InstanceNotFoundException {
+    private void cleanupMBeanServer() throws MalformedObjectNameException, MBeanRegistrationException, InstanceNotFoundException {
         ArrayList<MBeanServer> servers = MBeanServerFactory.findMBeanServer(null);
         for (MBeanServer server : servers) {
             ObjectName naming = new ObjectName("Catalina:*");

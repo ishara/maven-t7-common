@@ -10,8 +10,8 @@ import com.googlecode.t7mp.steps.deployment.TomcatSetupSequence;
  *
  */
 public class MavenTomcatSetupSequence extends DefaultStepSequence {
-    
-    public MavenTomcatSetupSequence(){
+
+    public MavenTomcatSetupSequence() {
         this.add(new CheckT7ArtifactsStep());
         // add the default
         this.add(new TomcatSetupSequence());

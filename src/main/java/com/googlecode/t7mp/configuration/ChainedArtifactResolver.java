@@ -12,32 +12,32 @@ import org.apache.commons.lang.Validate;
  *
  */
 public class ChainedArtifactResolver implements PluginArtifactResolver {
-	
-	protected List<PluginArtifactResolver> resolverChain = new LinkedList<PluginArtifactResolver>();
-	
-	public ChainedArtifactResolver(){
-		this.resolverChain.add(new SystemPathArtifactResolver());
-	}
 
-	@Override
-	public File resolveArtifact(final String coordinates) throws ResolutionException {
-		File result = null;
-		for(PluginArtifactResolver resolver : resolverChain){
-			try {
-				result = resolver.resolveArtifact(coordinates);
-			} catch (ResolutionException e) {
-				// 
-			}
-		}
-		if(result == null){
-			throw new ResolutionException("Could not resolve artifact with coordinates " + coordinates );
-		}
-		return result;
-	}
-	
-	public void addPluginArtifactResolver(PluginArtifactResolver pluginArtifactResolver){
-		Validate.notNull(pluginArtifactResolver, "PluginArtifactResolvers should not be null");
-		this.resolverChain.add(pluginArtifactResolver);
-	}
+    protected List<PluginArtifactResolver> resolverChain = new LinkedList<PluginArtifactResolver>();
+
+    public ChainedArtifactResolver() {
+        this.resolverChain.add(new SystemPathArtifactResolver());
+    }
+
+    @Override
+    public File resolveArtifact(final String coordinates) throws ResolutionException {
+        File result = null;
+        for (PluginArtifactResolver resolver : resolverChain) {
+            try {
+                result = resolver.resolveArtifact(coordinates);
+            } catch (ResolutionException e) {
+                // 
+            }
+        }
+        if (result == null) {
+            throw new ResolutionException("Could not resolve artifact with coordinates " + coordinates);
+        }
+        return result;
+    }
+
+    public void addPluginArtifactResolver(PluginArtifactResolver pluginArtifactResolver) {
+        Validate.notNull(pluginArtifactResolver, "PluginArtifactResolvers should not be null");
+        this.resolverChain.add(pluginArtifactResolver);
+    }
 
 }

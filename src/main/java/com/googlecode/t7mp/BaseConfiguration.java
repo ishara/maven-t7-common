@@ -20,7 +20,7 @@ public class BaseConfiguration {
     public static final int DEFAULT_TOMCAT_SHUTDOWN_PORT = 8005;
 
     public static final String DEFAULT_CONTEXT_PATH_ROOT = "ROOT";
-    
+
     protected TomcatArtifact tomcatArtifact = new TomcatArtifact();
 
     /**
@@ -401,12 +401,12 @@ public class BaseConfiguration {
     public void setDownloadTomcatExamples(boolean downloadTomcatExamples) {
         this.downloadTomcatExamples = downloadTomcatExamples;
     }
-    
-    public TomcatArtifact getTomcatArtifact(){
-    	return this.tomcatArtifact;
+
+    public TomcatArtifact getTomcatArtifact() {
+        return this.tomcatArtifact;
     }
-    
-    public void setTomcatArtifact(TomcatArtifact tomcatArtifact){
-    	this.tomcatArtifact = tomcatArtifact;
+
+    public void setTomcatArtifact(TomcatArtifact tomcatArtifact) {
+        this.tomcatArtifact = tomcatArtifact;
     }
 }

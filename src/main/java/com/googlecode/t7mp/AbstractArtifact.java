@@ -57,7 +57,7 @@ public abstract class AbstractArtifact {
      * @parameter
      */
     protected String classifier;
-    
+
     /**
      * 
      * @parameter
@@ -118,14 +118,14 @@ public abstract class AbstractArtifact {
     }
 
     public String getSystemPath() {
-		return this.systemPath;
-	}
+        return this.systemPath;
+    }
 
-	public void setSystemPath(String systemPath) {
-		this.systemPath = systemPath;
-	}
+    public void setSystemPath(String systemPath) {
+        this.systemPath = systemPath;
+    }
 
-	public File getFile() {
+    public File getFile() {
         return file;
     }
 
@@ -134,18 +134,18 @@ public abstract class AbstractArtifact {
     }
 
     public String getArtifactCoordinates() {
-    	if(!StringUtils.isBlank(getSystemPath())){
-    		return getSystemPath();
-    	}else{
-    		return buildDefaultMavenCoordinates();
-    	}
+        if (!StringUtils.isBlank(getSystemPath())) {
+            return getSystemPath();
+        } else {
+            return buildDefaultMavenCoordinates();
+        }
     }
-    
+
     /**
      * The {@code <groupId>:<artifactId>[:<extension>[:<classifier>]]:<version>} of the artifact.
      * 
      */
-    protected String buildDefaultMavenCoordinates(){
+    protected String buildDefaultMavenCoordinates() {
         StringBuilder sb = new StringBuilder();
         sb.append(getGroupId()).append(":");
         sb.append(getArtifactId());

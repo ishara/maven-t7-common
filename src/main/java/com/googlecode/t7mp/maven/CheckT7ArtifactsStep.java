@@ -43,7 +43,7 @@ public class CheckT7ArtifactsStep implements Step {
     @SuppressWarnings("unchecked")
     @Override
     public void execute(Context context) {
-        mojo = ((MavenPluginContext)context).getMojo();
+        mojo = ((MavenPluginContext) context).getMojo();
         configuration = context.getConfiguration();
         log = context.getLog();
         noVersionPredicate = new NoVersionPredicate(log);
@@ -81,9 +81,7 @@ public class CheckT7ArtifactsStep implements Step {
 
     protected void logDependencies(List<Dependency> dependencies) {
         for (Dependency dependency : dependencies) {
-            log.debug("found dependency : " + dependency.toString() + " groupId:" + dependency.getGroupId()
-                    + " artifactId:" + dependency.getArtifactId() + " version:" + dependency.getVersion()
-                    + " packaging:" + dependency.getType());
+            log.debug("found dependency : " + dependency.toString() + " groupId:" + dependency.getGroupId() + " artifactId:" + dependency.getArtifactId() + " version:" + dependency.getVersion() + " packaging:" + dependency.getType());
         }
     }
 

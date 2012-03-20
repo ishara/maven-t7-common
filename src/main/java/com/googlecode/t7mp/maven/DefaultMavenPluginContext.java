@@ -6,12 +6,12 @@ import com.googlecode.t7mp.configuration.PluginArtifactResolver;
 import com.googlecode.t7mp.steps.Context;
 
 public class DefaultMavenPluginContext implements MavenPluginContext {
-    
+
     protected Context context;
     protected AbstractT7BaseMojo mojo;
-    
-    public DefaultMavenPluginContext(Context parent, AbstractT7BaseMojo mojo){
-        
+
+    public DefaultMavenPluginContext(Context parent, AbstractT7BaseMojo mojo) {
+
     }
 
     @Override
