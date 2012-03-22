@@ -25,6 +25,9 @@ public class ChainedArtifactResolver implements PluginArtifactResolver {
         for (PluginArtifactResolver resolver : resolverChain) {
             try {
                 result = resolver.resolveArtifact(coordinates);
+                if(result != null){
+                	break;
+                }
             } catch (ResolutionException e) {
                 // 
             }

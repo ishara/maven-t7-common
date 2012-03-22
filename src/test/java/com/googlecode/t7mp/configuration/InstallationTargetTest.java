@@ -9,6 +9,11 @@ import org.junit.rules.TemporaryFolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 
+ * @author Joerg Bellmann
+ *
+ */
 public class InstallationTargetTest {
 
     private static Logger LOG = LoggerFactory.getLogger(InstallationTargetTest.class);
