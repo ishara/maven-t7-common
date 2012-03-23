@@ -15,8 +15,8 @@
  */
 package com.googlecode.t7mp.steps;
 
-import com.googlecode.t7mp.BaseConfiguration;
 import com.googlecode.t7mp.PluginLog;
+import com.googlecode.t7mp.T7Configuration;
 import com.googlecode.t7mp.configuration.PluginArtifactResolver;
 
 /**
@@ -31,7 +31,7 @@ public interface Context {
 
     PluginArtifactResolver getArtifactResolver();
 
-    BaseConfiguration getConfiguration();
+    T7Configuration getConfiguration();
 
     void put(String key, Object value);
 

@@ -18,9 +18,9 @@ package com.googlecode.t7mp.steps;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.googlecode.t7mp.BaseConfiguration;
 import com.googlecode.t7mp.DefaultPluginLog;
 import com.googlecode.t7mp.PluginLog;
+import com.googlecode.t7mp.T7Configuration;
 import com.googlecode.t7mp.configuration.PluginArtifactResolver;
 
 /**
@@ -35,9 +35,9 @@ public class DefaultContext implements Context {
     protected Map<String, Object> context = new HashMap<String, Object>();
 
     protected PluginArtifactResolver artifactResolver;
-    protected BaseConfiguration baseConfiguration;
+    protected T7Configuration baseConfiguration;
 
-    public DefaultContext(PluginArtifactResolver artifactResolver, BaseConfiguration baseConfiguration) {
+    public DefaultContext(PluginArtifactResolver artifactResolver, T7Configuration baseConfiguration) {
         this.artifactResolver = artifactResolver;
         this.baseConfiguration = baseConfiguration;
     }
@@ -53,7 +53,7 @@ public class DefaultContext implements Context {
     }
 
     @Override
-    public BaseConfiguration getConfiguration() {
+    public T7Configuration getConfiguration() {
         return baseConfiguration;
     }
 

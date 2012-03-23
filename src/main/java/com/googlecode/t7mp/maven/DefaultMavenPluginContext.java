@@ -1,7 +1,7 @@
 package com.googlecode.t7mp.maven;
 
-import com.googlecode.t7mp.BaseConfiguration;
 import com.googlecode.t7mp.PluginLog;
+import com.googlecode.t7mp.T7Configuration;
 import com.googlecode.t7mp.configuration.PluginArtifactResolver;
 import com.googlecode.t7mp.steps.Context;
 
@@ -25,7 +25,7 @@ public class DefaultMavenPluginContext implements MavenPluginContext {
     }
 
     @Override
-    public BaseConfiguration getConfiguration() {
+    public T7Configuration getConfiguration() {
         return context.getConfiguration();
     }
 

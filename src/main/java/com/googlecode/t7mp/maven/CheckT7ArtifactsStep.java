@@ -24,7 +24,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import com.googlecode.t7mp.AbstractArtifact;
-import com.googlecode.t7mp.PluginConfiguration;
+import com.googlecode.t7mp.T7Configuration;
 import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.TomcatSetupException;
 import com.googlecode.t7mp.steps.Context;
@@ -36,7 +36,7 @@ public class CheckT7ArtifactsStep implements Step {
 
     @Deprecated
     private AbstractT7BaseMojo mojo;
-    private PluginConfiguration configuration;
+    private T7Configuration configuration;
     private PluginLog log;
     private final Collection<AbstractArtifact> noVersionArtifacts = Lists.newArrayList();
 

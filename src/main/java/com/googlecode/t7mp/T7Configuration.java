@@ -7,7 +7,12 @@ import java.util.Map;
 
 import com.googlecode.t7mp.scanner.ScannerConfiguration;
 
-public interface PluginConfiguration {
+/**
+ * 
+ * @author Joerg Bellmann
+ *
+ */
+public interface T7Configuration {
 
     boolean isTomcatSetAwait();
 

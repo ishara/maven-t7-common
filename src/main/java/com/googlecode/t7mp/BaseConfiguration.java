@@ -13,7 +13,7 @@ import com.googlecode.t7mp.scanner.ScannerConfiguration;
  * @author Joerg Bellmann
  *
  */
-public class BaseConfiguration implements PluginConfiguration {
+public class BaseConfiguration implements T7Configuration {
 
     public static final int DEFAULT_TOMCAT_HTTP_PORT = 8080;
 

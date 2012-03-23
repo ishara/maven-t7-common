@@ -26,7 +26,7 @@ import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.runtime.log.LogChute;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
-import com.googlecode.t7mp.PluginConfiguration;
+import com.googlecode.t7mp.T7Configuration;
 import com.googlecode.t7mp.TomcatSetupException;
 import com.googlecode.t7mp.steps.Context;
 import com.googlecode.t7mp.steps.Step;
@@ -35,7 +35,7 @@ public class BuildCatalinaPropertiesFileStep implements Step {
 
     @Override
     public void execute(Context context) {
-        final PluginConfiguration configuration = context.getConfiguration();
+        final T7Configuration configuration = context.getConfiguration();
         try {
             Velocity.setProperty(Velocity.RUNTIME_LOG_LOGSYSTEM, new LogNothingLogChute());
             Velocity.setProperty(Velocity.RESOURCE_LOADER, "class");

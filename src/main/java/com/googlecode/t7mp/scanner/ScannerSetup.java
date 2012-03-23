@@ -17,7 +17,7 @@ package com.googlecode.t7mp.scanner;
 
 import java.io.File;
 
-import com.googlecode.t7mp.PluginConfiguration;
+import com.googlecode.t7mp.T7Configuration;
 import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.ShutdownHook;
 
@@ -33,7 +33,7 @@ public final class ScannerSetup {
         //hide constructor
     }
 
-    public static void configureScanners(ShutdownHook shutdownHook, PluginConfiguration t7Mojo, PluginLog log) {
+    public static void configureScanners(ShutdownHook shutdownHook, T7Configuration t7Mojo, PluginLog log) {
         if (!t7Mojo.isWebProject()) {
             log.info("Project seems not to be an web-project (packaging 'war'), skip scanner configuration");
             return;
