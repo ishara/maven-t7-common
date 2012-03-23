@@ -204,5 +204,12 @@
         <module name="UpperEll"/>
 
     </module>
+    
+    		<!-- disable checkstyle on particular line with comment -->
+		<module name="SuppressionCommentFilter">
+		    <property name="offCommentFormat" value="CHECKSTYLE.OFF\: ([\w\|]+)"/>
+		    <property name="onCommentFormat" value="CHECKSTYLE.ON\: ([\w\|]+)"/>
+		    <property name="checkFormat" value="$1"/>
+		</module>
 
 </module>

@@ -25,12 +25,13 @@ public class ChainedArtifactResolver implements PluginArtifactResolver {
         for (PluginArtifactResolver resolver : resolverChain) {
             try {
                 result = resolver.resolveArtifact(coordinates);
-                if(result != null){
-                	break;
+                if (result != null) {
+                    break;
                 }
+            //CHECKSTYLE.OFF: Empty catch block
             } catch (ResolutionException e) {
-                // 
             }
+            //CHECKSTYLE.ON: Empty catch block
         }
         if (result == null) {
             throw new ResolutionException("Could not resolve artifact with coordinates " + coordinates);
