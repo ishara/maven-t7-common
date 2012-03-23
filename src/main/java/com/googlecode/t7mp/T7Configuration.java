@@ -1,7 +1,6 @@
 package com.googlecode.t7mp;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -52,13 +51,13 @@ public interface T7Configuration {
 
     File getContextFile();
 
-    ArrayList<AbstractArtifact> getWebapps();
+    List<AbstractArtifact> getWebapps();
 
     Map<String, String> getSystemProperties();
 
     List<AbstractArtifact> getLibs();
 
-    ArrayList<ScannerConfiguration> getScanners();
+    List<ScannerConfiguration> getScanners();
 
     boolean isSuspendConsoleOutput();
 

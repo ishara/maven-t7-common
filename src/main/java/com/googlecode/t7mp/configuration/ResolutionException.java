@@ -13,4 +13,8 @@ public class ResolutionException extends Exception {
         super(message);
     }
 
+    public ResolutionException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
 }
