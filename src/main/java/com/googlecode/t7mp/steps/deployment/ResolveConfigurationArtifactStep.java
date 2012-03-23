@@ -7,7 +7,7 @@ import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
 
-import com.googlecode.t7mp.BaseConfiguration;
+import com.googlecode.t7mp.PluginConfiguration;
 import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.TomcatSetupException;
 import com.googlecode.t7mp.configuration.PluginArtifactResolver;
@@ -28,7 +28,7 @@ public class ResolveConfigurationArtifactStep implements Step {
 
     protected PluginLog logger;
 
-    protected BaseConfiguration baseConfiguration;
+    protected PluginConfiguration baseConfiguration;
     protected PluginArtifactResolver artifactResolver;
 
     @Override

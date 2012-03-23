@@ -18,7 +18,7 @@ package com.googlecode.t7mp.steps.resources;
 import java.io.File;
 import java.io.IOException;
 
-import com.googlecode.t7mp.BaseConfiguration;
+import com.googlecode.t7mp.PluginConfiguration;
 import com.googlecode.t7mp.SetupUtil;
 import com.googlecode.t7mp.TomcatSetupException;
 import com.googlecode.t7mp.steps.Context;
@@ -37,7 +37,7 @@ public class CopyTestContextXmlStep implements Step {
 
     @Override
     public void execute(Context context) {
-        final BaseConfiguration configuration = context.getConfiguration();
+        final PluginConfiguration configuration = context.getConfiguration();
         final File contextXml = configuration.getContextFile();
         if (contextXml != null && contextXml.exists()) {
             final File metaInfDirectory = new File(configuration.getCatalinaBase(), "/webapps/"

@@ -13,7 +13,7 @@ import com.googlecode.t7mp.scanner.ScannerConfiguration;
  * @author Joerg Bellmann
  *
  */
-public class BaseConfiguration {
+public class BaseConfiguration implements PluginConfiguration {
 
     public static final int DEFAULT_TOMCAT_HTTP_PORT = 8080;
 
@@ -190,6 +190,10 @@ public class BaseConfiguration {
      */
     protected boolean downloadTomcatExamples = false;
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#isTomcatSetAwait()
+     */
+    @Override
     public boolean isTomcatSetAwait() {
         return tomcatSetAwait;
     }
@@ -198,6 +202,10 @@ public class BaseConfiguration {
         this.tomcatSetAwait = tomcatSetAwait;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#isLookInside()
+     */
+    @Override
     public boolean isLookInside() {
         return lookInside;
     }
@@ -206,6 +214,10 @@ public class BaseConfiguration {
         this.lookInside = lookInside;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#isResolverUpdateSnapshotsAllways()
+     */
+    @Override
     public boolean isResolverUpdateSnapshotsAllways() {
         return resolverUpdateSnapshotsAllways;
     }
@@ -214,6 +226,10 @@ public class BaseConfiguration {
         this.resolverUpdateSnapshotsAllways = resolverUpdateSnapshotsAllways;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getTomcatVersion()
+     */
+    @Override
     public String getTomcatVersion() {
         return tomcatVersion;
     }
@@ -222,6 +238,10 @@ public class BaseConfiguration {
         this.tomcatVersion = tomcatVersion;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getTomcatHttpPort()
+     */
+    @Override
     public int getTomcatHttpPort() {
         return tomcatHttpPort;
     }
@@ -230,6 +250,10 @@ public class BaseConfiguration {
         this.tomcatHttpPort = tomcatHttpPort;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getTomcatShutdownPort()
+     */
+    @Override
     public int getTomcatShutdownPort() {
         return tomcatShutdownPort;
     }
@@ -238,6 +262,10 @@ public class BaseConfiguration {
         this.tomcatShutdownPort = tomcatShutdownPort;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getTomcatShutdownCommand()
+     */
+    @Override
     public String getTomcatShutdownCommand() {
         return tomcatShutdownCommand;
     }
@@ -246,6 +274,10 @@ public class BaseConfiguration {
         this.tomcatShutdownCommand = tomcatShutdownCommand;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getTomcatShutdownHost()
+     */
+    @Override
     public String getTomcatShutdownHost() {
         return tomcatShutdownHost;
     }
@@ -254,6 +286,10 @@ public class BaseConfiguration {
         this.tomcatShutdownHost = tomcatShutdownHost;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getCatalinaBase()
+     */
+    @Override
     public File getCatalinaBase() {
         return catalinaBase;
     }
@@ -262,6 +298,10 @@ public class BaseConfiguration {
         this.catalinaBase = catalinaBase;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getTomcatConfigDirectory()
+     */
+    @Override
     public File getTomcatConfigDirectory() {
         return tomcatConfigDirectory;
     }
@@ -270,6 +310,10 @@ public class BaseConfiguration {
         this.tomcatConfigDirectory = tomcatConfigDirectory;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getOverwriteWebXML()
+     */
+    @Override
     public File getOverwriteWebXML() {
         return overwriteWebXML;
     }
@@ -278,6 +322,10 @@ public class BaseConfiguration {
         this.overwriteWebXML = overwriteWebXML;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getWebappOutputDirectory()
+     */
+    @Override
     public File getWebappOutputDirectory() {
         return webappOutputDirectory;
     }
@@ -286,6 +334,10 @@ public class BaseConfiguration {
         this.webappOutputDirectory = webappOutputDirectory;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getContextPath()
+     */
+    @Override
     public String getContextPath() {
         return contextPath;
     }
@@ -294,6 +346,10 @@ public class BaseConfiguration {
         this.contextPath = contextPath;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getBuildFinalName()
+     */
+    @Override
     public String getBuildFinalName() {
         return buildFinalName;
     }
@@ -302,6 +358,10 @@ public class BaseConfiguration {
         this.buildFinalName = buildFinalName;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getWebappSourceDirectory()
+     */
+    @Override
     public File getWebappSourceDirectory() {
         return webappSourceDirectory;
     }
@@ -310,6 +370,10 @@ public class BaseConfiguration {
         this.webappSourceDirectory = webappSourceDirectory;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getPackaging()
+     */
+    @Override
     public String getPackaging() {
         return packaging;
     }
@@ -318,6 +382,10 @@ public class BaseConfiguration {
         this.packaging = packaging;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#isScanClasses()
+     */
+    @Override
     public boolean isScanClasses() {
         return scanClasses;
     }
@@ -326,6 +394,10 @@ public class BaseConfiguration {
         this.scanClasses = scanClasses;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getWebappClassDirectory()
+     */
+    @Override
     public File getWebappClassDirectory() {
         return webappClassDirectory;
     }
@@ -334,6 +406,10 @@ public class BaseConfiguration {
         this.webappClassDirectory = webappClassDirectory;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getContextFile()
+     */
+    @Override
     public File getContextFile() {
         return contextFile;
     }
@@ -342,6 +418,10 @@ public class BaseConfiguration {
         this.contextFile = contextFile;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getWebapps()
+     */
+    @Override
     public ArrayList<AbstractArtifact> getWebapps() {
         return webapps;
     }
@@ -350,6 +430,10 @@ public class BaseConfiguration {
         this.webapps = webapps;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getSystemProperties()
+     */
+    @Override
     public Map<String, String> getSystemProperties() {
         return systemProperties;
     }
@@ -358,6 +442,10 @@ public class BaseConfiguration {
         this.systemProperties = systemProperties;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getLibs()
+     */
+    @Override
     public List<AbstractArtifact> getLibs() {
         return libs;
     }
@@ -366,6 +454,10 @@ public class BaseConfiguration {
         this.libs = libs;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getScanners()
+     */
+    @Override
     public ArrayList<ScannerConfiguration> getScanners() {
         return scanners;
     }
@@ -374,6 +466,10 @@ public class BaseConfiguration {
         this.scanners = scanners;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#isSuspendConsoleOutput()
+     */
+    @Override
     public boolean isSuspendConsoleOutput() {
         return suspendConsoleOutput;
     }
@@ -382,6 +478,10 @@ public class BaseConfiguration {
         this.suspendConsoleOutput = suspendConsoleOutput;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getConfigArtifact()
+     */
+    @Override
     public ConfigurationArtifact getConfigArtifact() {
         return configArtifact;
     }
@@ -390,10 +490,18 @@ public class BaseConfiguration {
         this.configArtifact = configArtifact;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#isWebProject()
+     */
+    @Override
     public boolean isWebProject() {
         return this.packaging.equals("war");
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#isDownloadTomcatExamples()
+     */
+    @Override
     public boolean isDownloadTomcatExamples() {
         return downloadTomcatExamples;
     }
@@ -402,6 +510,10 @@ public class BaseConfiguration {
         this.downloadTomcatExamples = downloadTomcatExamples;
     }
 
+    /* (non-Javadoc)
+     * @see com.googlecode.t7mp.PluginConfiguration#getTomcatArtifact()
+     */
+    @Override
     public TomcatArtifact getTomcatArtifact() {
         return this.tomcatArtifact;
     }

@@ -23,7 +23,7 @@ import java.util.UUID;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 
-import com.googlecode.t7mp.BaseConfiguration;
+import com.googlecode.t7mp.PluginConfiguration;
 import com.googlecode.t7mp.PluginLog;
 import com.googlecode.t7mp.TomcatArtifact;
 import com.googlecode.t7mp.TomcatSetupException;
@@ -42,7 +42,7 @@ import com.googlecode.t7mp.util.ZipUtil;
 public class ResolveTomcatStep implements Step {
 
     protected PluginLog logger;
-    protected BaseConfiguration configuration;
+    protected PluginConfiguration configuration;
     protected PluginArtifactResolver artifactResolver;
 
     @Override
