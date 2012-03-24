@@ -51,11 +51,11 @@ public interface T7Configuration {
 
     File getContextFile();
 
-    List<AbstractArtifact> getWebapps();
+    List<WebappArtifact> getWebapps();
 
     Map<String, String> getSystemProperties();
 
-    List<AbstractArtifact> getLibs();
+    List<JarArtifact> getLibs();
 
     List<ScannerConfiguration> getScanners();
 

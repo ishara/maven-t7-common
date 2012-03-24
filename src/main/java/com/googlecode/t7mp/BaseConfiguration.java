@@ -153,7 +153,7 @@ public class BaseConfiguration implements T7Configuration {
      * 
      * @parameter
      */
-    protected ArrayList<AbstractArtifact> webapps = new ArrayList<AbstractArtifact>();
+    protected ArrayList<WebappArtifact> webapps = new ArrayList<WebappArtifact>();
 
     /**
      * 
@@ -165,7 +165,7 @@ public class BaseConfiguration implements T7Configuration {
      * 
      * @parameter
      */
-    protected List<AbstractArtifact> libs = new ArrayList<AbstractArtifact>();
+    protected List<JarArtifact> libs = new ArrayList<JarArtifact>();
 
     /**
      * 
@@ -422,11 +422,11 @@ public class BaseConfiguration implements T7Configuration {
      * @see com.googlecode.t7mp.PluginConfiguration#getWebapps()
      */
     @Override
-    public ArrayList<AbstractArtifact> getWebapps() {
+    public ArrayList<WebappArtifact> getWebapps() {
         return webapps;
     }
 
-    public void setWebapps(ArrayList<AbstractArtifact> webapps) {
+    public void setWebapps(ArrayList<WebappArtifact> webapps) {
         this.webapps = webapps;
     }
 
@@ -446,11 +446,11 @@ public class BaseConfiguration implements T7Configuration {
      * @see com.googlecode.t7mp.PluginConfiguration#getLibs()
      */
     @Override
-    public List<AbstractArtifact> getLibs() {
+    public List<JarArtifact> getLibs() {
         return libs;
     }
 
-    public void setLibs(List<AbstractArtifact> libs) {
+    public void setLibs(List<JarArtifact> libs) {
         this.libs = libs;
     }
 
