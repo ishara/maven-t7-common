@@ -7,7 +7,7 @@
     </parent>
     <groupId>com.googlecode.t7mp</groupId>
     <artifactId>maven-t7-common</artifactId>
-    <version>0.9.10.M5</version>
+    <version>0.9.10-dev-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>maven-t7-common</name>
     <description>T7MP common</description>
