@@ -70,7 +70,7 @@ public abstract class AbstractArtifact {
         // default constructor
     }
 
-    protected AbstractArtifact(String groupId, String artifactId, String version, String classifier, String type) {
+    public AbstractArtifact(String groupId, String artifactId, String version, String classifier, String type) {
         this.setGroupId(groupId);
         this.setArtifactId(artifactId);
         this.setVersion(version);
