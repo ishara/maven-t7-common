@@ -66,7 +66,7 @@ public abstract class AbstractArtifact {
 
     protected File file;
 
-    AbstractArtifact() {
+    public AbstractArtifact() {
         // default constructor
     }
 

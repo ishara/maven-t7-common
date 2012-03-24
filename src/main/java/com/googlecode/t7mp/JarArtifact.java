@@ -15,14 +15,12 @@
  */
 package com.googlecode.t7mp;
 
-
 /**
  * TODO Comment.
  */
 public class JarArtifact extends AbstractArtifact {
 
     public JarArtifact() {
-        super();
     }
 
     public JarArtifact(String groupId, String artifactId, String version, String classifier, String type) {

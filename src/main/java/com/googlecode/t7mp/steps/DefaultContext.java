@@ -35,11 +35,11 @@ public class DefaultContext implements Context {
     protected Map<String, Object> context = new HashMap<String, Object>();
 
     protected PluginArtifactResolver artifactResolver;
-    protected T7Configuration baseConfiguration;
+    protected T7Configuration configuration;
 
-    public DefaultContext(PluginArtifactResolver artifactResolver, T7Configuration baseConfiguration) {
+    public DefaultContext(PluginArtifactResolver artifactResolver, T7Configuration configuration) {
         this.artifactResolver = artifactResolver;
-        this.baseConfiguration = baseConfiguration;
+        this.configuration = configuration;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class DefaultContext implements Context {
 
     @Override
     public T7Configuration getConfiguration() {
-        return baseConfiguration;
+        return configuration;
     }
 
     @Override
